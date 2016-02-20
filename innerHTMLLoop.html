@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">        
+</head>
+<body>
+    <div id="here">        
+    </div>
+
+    <br />
+    <br />
+
+    <div id="result1">
+    </div>
+    <br />
+    <div id="result2">
+    </div>
+    <script type="text/javascript">
+        var count = 15000;
+
+        function innerHTMLLoop1() {
+            var start = new Date();
+            for (var i = 0; i < count; i++) {
+                document.getElementById('here').innerHTML += 'a';
+            }
+            var end = new Date();
+            document.getElementById('result1').innerHTML = '['+(end - start)+']';
+        }
+
+        innerHTMLLoop1();
+        innerHTMLLoop2();
+
+        function innerHTMLLoop2() {
+            var start = new Date();            
+            var content = '';
+            for (var i = 0; i < count; i++) {
+                content += 'a';
+            }
+            document.getElementById('here').innerHTML = content;
+            var end = new Date();
+            document.getElementById('result2').innerHTML = '[' + (end - start) + ']';
+        }
+    </script>
+</body>
+</html>

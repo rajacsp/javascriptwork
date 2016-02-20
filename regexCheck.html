@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>        
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">    
+    <script type="text/javascript">
+
+    var str = 'single words "fixed string of words"';
+    var matches = /".+?"/.exec(str);
+    str = str.replace(/".+?"/, "").replace(/^\s+|\s+$/g, "");
+    var astr = str.split(" ");
+    if (matches) {
+        for (var i = 0; i < matches.length; i++) {
+            astr.push(matches[i].replace(/"/g, ""));
+        }
+    }
+
+    alert(astr);
+
+    </script>    
+</head>
+<body >
+</body>
+</html>

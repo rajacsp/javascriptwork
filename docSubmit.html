@@ -1,0 +1,21 @@
+﻿<html>
+    <head>        
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script type="text/javascript">
+            function callMe() {
+                alert('trap1.1');
+                var form = document.createElement("form");
+                alert(form);
+                form.action = "test.asp";
+                alert(form.action);
+                //form.submit();
+                document.body.appendChild(form);
+                form.submit();
+            }
+        </script>        
+    </head>
+    <body>
+        <input type="button" value="dynamic submit" onclick="callMe();" />
+        
+    </body>
+</html>

@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script type="text/javascript">
+            function report() {
+                this.align = null;
+                this.backgroundColour = 'bg color';
+                this.foregroundColour = null;
+                this.fontSize = 'font size';
+                this.fontStyle = null;
+                this.font = null;
+                this.margin = null;
+                this.width = null;
+                this.height = null;
+
+                //private
+                this.registry_path = "Business Intelligence and Reports::Report Labels::";
+
+                // private : to calculate where is the cursor -> error prone flag
+                // if outputLine method is called outside table, an error should be thrown
+                this.cursorInsideTable = false;
+
+                // public: set the property by sending property name and value
+                this.setProperty = function (name, value) {
+                    //alert(this.name);
+                    alert(this[name]);
+                    if (this[name] != undefined)
+                        this[name] = value;
+                }
+
+                this.setFontSize = function (value) {
+                    this.fontSize = value;
+                }
+            }
+
+            var myReport = new report();
+            myReport.setProperty("fontSize", 24);
+            //myReport.setFontSize(3);
+
+            var msg = '';
+            msg += '<br> align : ' + myReport.align;
+            msg += '<br> backgroundColour : ' + myReport.backgroundColour;
+            msg += '<br> foregroundColour : ' + myReport.foregroundColour;
+            msg += '<br> fontSize : ' + myReport.fontSize;
+            msg += '<br> fontStyle : ' + myReport.fontStyle;
+            msg += '<br> font : ' + myReport.font;
+            msg += '<br> margin : ' + myReport.margin;
+            document.write(msg);
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

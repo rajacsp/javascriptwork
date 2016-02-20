@@ -1,0 +1,38 @@
+﻿<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script type="text/javascript">           
+            
+
+            /*
+            myActiveXObject = new ActiveXObject("Scripting.FileSystemObject");
+            file = myActiveXObject.GetFile("http://digest.textfiles.com/food/aniherb.txt");
+            document.write(file);
+            //document.write(file.DateLastModified);
+            */
+
+            var txtFile = new XMLHttpRequest();
+            txtFile.open("GET", "http://digest.textfiles.com/food/aniherb.txt", true);
+            alert(txtFile);
+            txtFile.onreadystatechange = function () {
+                alert('ss');
+                if (txtFile.readyState === 4) {  // Makes sure the document is ready to parse.
+                    alert('4');
+                    alert('txtFile.status : ' + txtFile.status);
+                    alert(txtFile.DateLastModified);
+                    if (txtFile.status === 200) {  // Makes sure it's found the file.
+                        alert('200');
+                        allText = txtFile.responseText;
+                        alert(allText);
+                        lines = txtFile.responseText.split("\n"); // Will separate each line into an array
+                        alert(lines);
+                        document.write(lines);
+                    }
+                }
+            }
+            txtFile.send(null);
+        </script>        
+    </head>
+    <body>
+    </body>
+</html>

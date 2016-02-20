@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript">
+
+        var DECIMAL_LEVEL = 2;
+        var PERCENTAGE = "%";
+        var SIZE_1 = 100;
+        var SIZE_2 = 75;
+        var SIZE_3 = 150;
+        var SIZE_4 = 40;
+        var LEFT = "left";
+        var RIGHT = "right";
+        var CENTER = "center";
+        var EMPTY_STRING = "";
+        var BOLD = 'bold';
+
+        function tableRowAttributes()
+        {
+            this.alignment = null;
+            this.backgroundColour = null;
+            this.foregroundColour = null;
+            this.fontSize = null;
+            this.fontStyle = null;
+            this.font = null;
+
+            // grouped attributes
+            this.colSpans = null;
+            this.colWidths = null;
+            this.alignments = null;
+            this.backgroundColours = null;
+            this.foregroundColours = null;
+            this.fontSizes = null;
+            this.fontStyles = null;
+            this.fonts = null;
+        }
+        
+        // count row
+        var countRow = new tableRowAttributes();
+        countRow.backgroundColour = '#FFFFFF';
+        countRow.colWidths = new Array();
+        countRow.alignments = new Array();
+
+        var countValues = new Array();
+
+        countValues.push("One");
+        countRow.colWidths.push(SIZE_2);
+        countRow.alignments.push(LEFT);
+
+        countValues.push("Two");
+        countRow.colWidths.push(SIZE_2);
+        countRow.alignments.push(LEFT);
+
+        countValues.push("Three");
+        countRow.colWidths.push(SIZE_2);
+        countRow.alignments.push(LEFT);
+
+        countValues.push("Four");
+        countRow.colWidths.push(SIZE_2);
+        countRow.alignments.push(LEFT);
+
+        countValues.push("Five");
+        countRow.colWidths.push(SIZE_2);
+        countRow.alignments.push(LEFT);
+
+        countValues.push("Six");
+        countRow.colWidths.push(SIZE_2);
+        countRow.alignments.push(LEFT);
+
+        document.write(countRow.colWidths);
+
+    </script>    
+</head>
+<body >
+</body>
+</html>

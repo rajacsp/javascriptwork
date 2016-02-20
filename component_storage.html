@@ -1,0 +1,85 @@
+﻿<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script type="text/javascript">
+            /*
+            // common component should be initialized before it's implemented
+            var common_component = function ()
+            {
+                this.admission_count = 0;
+                this.net = parseFloat(String(0));
+                this.charge = parseFloat(String(0));
+                this.tax = parseFloat(String(0));
+                this.commission = parseFloat(String(0));
+                this.userTax1 = parseFloat(String(0));
+                this.userTax2 = parseFloat(String(0));
+                this.gross = parseFloat(String(0));
+
+                this.update_common_component = function (field)
+                {
+                    this.admission_count += parseInt(String(field.admission_count));
+                    this.net += parseFloat(String(field.NET));
+                    this.charge += parseFloat(String(field.CHG1));
+                    this.tax += parseFloat(String(field.CHG2));
+                    this.commission += parseFloat(String(field.CHG3));
+                    this.userTax1 += parseFloat(String(field.CHG4));
+                    this.userTax2 += parseFloat(String(field.CHG5));
+                    this.gross += parseFloat(String(field.GROSS));
+                }
+            }
+            */
+
+            var ts_component = function ()
+            {
+                this.count = 0;
+
+                this.update_ts_component = function(count)
+                {
+                    this.count = count;
+                };
+            }
+
+            var sales_component = new ts_component();
+            sales_component.update_ts_component(3435);
+            
+            document.write(sales_component.count);
+
+            /*
+            var sales_role_count  = 0;
+            var net_sales_count = 0;
+
+            function set_row_variables()
+            {
+                sales_count = parseFloat(33);
+            }
+
+            function add_sales_role_count()
+            {
+                sales_role_count = sales_count + sales_role_count;
+            }
+
+            function set_row_net()
+            {
+                net_sales_count = sales_count + price_changes_count + returns_count;
+            }
+
+            function reset_row_variables()
+            {
+                sales_count = 0;
+            }
+
+            function calc_role_totals()
+            {
+                sales_count_role_total = sales_count + sales_count_role_total;
+            }
+
+            function write_row()
+            {
+                // add sales_count
+            }
+            */
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

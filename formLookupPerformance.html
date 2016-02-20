@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">        
+</head>
+<body>
+    <form method="get" action="plain.html" name="f1form" >
+        <input type="hidden" name="f1h0" value="f1h1_value" />
+        <input type="hidden" name="f1h1" value="f1h1_value" />
+        <input type="hidden" name="f1h2" value="f1h1_value" />
+        <input type="hidden" name="f1h3" value="f1h1_value" />
+        <input type="hidden" name="f1h4" value="f1h1_value" />
+        <input type="hidden" name="f1h5" value="f1h1_value" />
+        <input type="hidden" name="f1h6" value="f1h1_value" />
+        <input type="hidden" name="f1h7" value="f1h1_value" />
+        <input type="hidden" name="f1h8" value="f1h1_value" />
+        <input type="hidden" name="f1h9" value="f1h1_value" />
+    </form>
+
+    <script type="text/javascript">
+        var count = 50000;
+
+        function domFormLookupTest1() {
+            var start = new Date();
+            for (var i = 0; i < count; i++)
+            {
+                document.forms[0].f1h0.value;
+                document.forms[0].f1h1.value;
+                document.forms[0].f1h2.value;
+                document.forms[0].f1h3.value;
+                document.forms[0].f1h4.value;
+                document.forms[0].f1h5.value;
+                document.forms[0].f1h6.value;
+                document.forms[0].f1h7.value;
+                document.forms[0].f1h8.value;
+                document.forms[0].f1h9.value;
+            }
+            var end = new Date();
+            document.write(end - start+'<br>');
+        }
+
+        domFormLookupTest1();
+        domFormLookupTest2();
+        domFormLookupTest3();
+
+        function domFormLookupTest2() {
+            var start = new Date();
+            var doc = document;
+            for (var i = 0; i < count; i++) {
+                doc.forms[0].f1h0.value;
+                doc.forms[0].f1h1.value;
+                doc.forms[0].f1h2.value;
+                doc.forms[0].f1h3.value;
+                doc.forms[0].f1h4.value;
+                doc.forms[0].f1h5.value;
+                doc.forms[0].f1h6.value;
+                doc.forms[0].f1h7.value;
+                doc.forms[0].f1h8.value;
+                doc.forms[0].f1h9.value;
+            }
+            var end = new Date();
+            document.write(end - start+'<br>');
+        }
+
+        function domFormLookupTest3() {
+            var start = new Date();
+            var docForm = document.forms[0];
+            for (var i = 0; i < count; i++) {
+                docForm.f1h0.value;
+                docForm.f1h1.value;
+                docForm.f1h2.value;
+                docForm.f1h3.value;
+                docForm.f1h4.value;
+                docForm.f1h5.value;
+                docForm.f1h6.value;
+                docForm.f1h7.value;
+                docForm.f1h8.value;
+                docForm.f1h9.value;
+            }
+            var end = new Date();
+            document.write(end - start + '<br>');
+        }
+    </script>
+</body>
+</html>

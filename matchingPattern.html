@@ -1,0 +1,74 @@
+﻿<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script type="text/javascript">
+            
+            var arrayLimit = 1000000;
+            var randomNumberLimit = 100000000;            
+            var iArray = new Array();
+            iArray = fillArray(iArray, arrayLimit);
+            var processedRows = 0;
+
+
+            jArray = refillArray(iArray);
+            //alert(jArray);
+
+            //alert(iArray[0] == (parseInt(jArray[0].substring(0, 1))));
+            var i = 0;
+            var j = 0;
+
+            var msg = '';
+            var start = new Date();
+            var iLength = iArray.length;
+            var jLength = jArray.length;
+            while(i<iLength){
+
+                while (j < jLength && ( iArray[i] == (  jArray[j])  )) {
+                    msg += iArray[i] + ' = ' + jArray[j];
+                    msg += '<br>';
+                    j++;
+                    processedRows++;
+                }
+                msg += '<br>';
+                i++;
+                processedRows++;
+            }
+            var end = new Date();
+
+            //document.write(msg);
+            document.write('processedRows : ' + processedRows);
+            document.write('<br>processing time : ' + (end - start) / 1000);            
+
+            function fillArray(ar, limit)
+            {
+                for (var i = 0; i < limit; i++)
+                {
+                    ar.push(genRandomNumber(randomNumberLimit));
+                }
+                //alert(ar);
+                ar.sort();
+                return ar;
+            }
+
+            function refillArray(ar) {
+                var nar = new Array();
+                for (var i = 0; i < ar.length; i++) {
+                    var cNumber = ar[i];
+                    for (var j = 0; j < genRandomNumber(5); j++) {
+                        nar.push(cNumber);
+                    }
+                }
+                nar.sort();
+                return nar;
+            }
+
+            function genRandomNumber(limit)
+            {
+                return Math.floor((Math.random() * limit) + 1);
+            }
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

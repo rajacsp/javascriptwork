@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Screen Width Test</title>
+<style type="text/css">
+@media all and (max-device-width: 1024px) {
+        body {
+        background-color: yellow;
+        }
+}
+
+</style>
+
+</head>
+<body>
+<script type="text/javascript">
+    var sales_rows = new Array();
+    function sales_row(key, title, sales_count) {
+
+        this.update_sales_count = function (current_count, new_count) {
+            return current_count + new_count;
+        }
+
+        //find the match if any
+        for (i = 0; i < sales_rows.length; i++) {
+            var currentRow = sales_rows[i];
+            if (currentRow.key == key) {
+                currentRow.key = key;
+
+                currentRow.title = title;
+                //currentRow.sales_count += sales_count;
+                currentRow.sales_count = this.update_sales_count(currentRow.sales_count, sales_count);
+                sales_rows[i] = currentRow;
+                return;
+            }
+        }
+
+        
+
+        // push at last
+        this.key = key;
+
+        this.title = title;
+        this.sales_count = sales_count;
+        sales_rows.push(this);
+    }
+
+    var addSalesRow = function (key, title, sales_count) {
+        new sales_row(key, title, sales_count);
+    }
+
+    addSalesRow('Star', 'title_one', 1);
+    addSalesRow('Star', 'title_two', 5);
+
+    for (var i = 0; i < sales_rows.length; i++) {
+        var c_row = sales_rows[i];
+
+        document.write('key : [' + c_row.key + '], sales_count : [' + c_row.sales_count + ']');
+    }
+
+
+</script>
+</body>
+</html>

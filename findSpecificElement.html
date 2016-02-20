@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript">
+        var doc = document;
+        function init() {
+            var li = document.getElementById('find');
+            var li_kid = findSpecificElementUnderCurrentElement(li, 2, 'span', 'class', 'ui-icon ui-icon-checkbox-off two');
+            //var li_kid = findSpecificElementUnderCurrentElement(li, 2, 'span');
+
+            //ruid(li_kid.getAttribute("class"));
+        }
+
+        // level: 1=first level (kid), 2=second level(kid)
+        // type : span, div, input
+        // key : attribute (class, id)
+        // value : matching value for key
+        function findSpecificElementUnderCurrentElement(element, level, type, key, value) {
+            var keyAvailable = true;
+
+            if (key === undefined)
+                keyAvailable = false;
+
+            var collections = element.childNodes;
+
+            for (i = 0; i < collections.length; i++) {
+                var level1Child = collections[i];
+                //ruid(currentChild.nodeName == type.toUpperCase());
+                
+                if (level1Child.nodeType == 3) //neglect text nodes
+                    continue;
+
+                var level1ChildCollections = level1Child.childNodes;
+                for (j = 0; j < level1ChildCollections.length; j++) {
+                    var level2Child = level1ChildCollections[j];
+                    if (level2Child.nodeType == 3) { //neglect text nodes
+                        continue;
+                    }
+
+                    if (level2Child.nodeName == type.toUpperCase()) {
+                        if (!keyAvailable)
+                            return level2Child;
+
+                        if (
+                            ((level2ChildValue = level2Child.getAttribute(key)) != undefined)
+                            &&
+                            (level2ChildValue == value)
+                             
+                        ){
+                            return level2Child;
+                        }
+                    }
+                }
+            }
+            return null;            
+        }
+
+        // update id
+        function uid(id, content) {
+            doc.getElementById(id).innerHTML += content + '<br>';
+        }
+
+        function ruid(content){
+            uid('result', content);
+        }
+
+    </script>    
+</head>
+<body onload="init();">
+    <ul>
+        <li id="find" >
+            <div class="ui-btn-inner ui-li">
+                <div class="ui-btn-text">
+                    <a class="ui-link-inherit" href="#">Zone One</a>
+                </div>
+                <span></span>
+                <span class="ui-icon ui-icon-checkbox-off"></span>
+                <span class="ui-icon ui-icon-checkbox-off two"></span>
+                <span class="ui-icon ui-icon-checkbox-off three"></span>
+            </div>
+        </li>
+        <li>
+            <div class="ui-btn-inner ui-li">
+                <div class="ui-btn-text">
+                    <a class="ui-link-inherit" href="#">Zone Two</a>
+                </div>
+                <span class="ui-icon ui-icon-checkbox-off"></span>
+            </div>
+        </li>
+        <li>
+            <div class="ui-btn-inner ui-li">
+                <div class="ui-btn-text">
+                    <a class="ui-link-inherit" href="#">Zone Three</a>
+                </div>
+                <span class="ui-icon ui-icon-checkbox-off"></span>
+            </div>
+        </li>
+    </ul>
+
+    <div id="result"></div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript">
+
+        function loopDom(id) {
+            var dom = document.getElementById(id);            
+
+            if (!dom.hasChildNodes) {
+                alert('no child nodes');
+                return;
+            }
+
+            alert(dom.childNodes.length);
+            var fc = dom.firstChild;
+            alert(fc.nodeValue);            
+        }
+
+    </script>    
+</head>
+<body >
+    <select id="numbers" name="numbers">
+        <option value="1" >1</option>
+        <option value="2" >2</option>
+        <option value="3" >3</option>
+        <option value="4" >4</option>
+        <option value="5" >5</option>
+    </select>
+
+    <input type="button" value="loop" onclick="loopDom('numbers')" />
+</body>
+</html>

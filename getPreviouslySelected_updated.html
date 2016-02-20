@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript">
+
+    </script>    
+</head>
+<body >    
+<script type="text/javascript">
+
+    // Global array to store selection indexes
+    selectedItems = new Array();
+
+    // Adds current selection index to array
+    function removeCurrent(a) {
+        var x = a.options;
+        for (var i = 0; i < x.length; i++) {
+            if (x[i].selected) {
+                selectedItems.pop(i);
+            }
+        }
+    }
+
+</script>
+<form action="" name="aForm">
+<select name="pzone1" onchange="">
+<option value="opt0">
+<option value="opt1">Option 1
+<option value="opt2">Option 2
+<option value="opt3">Option 3
+<option value="opt4">Option 4
+</select>
+</form>
+</body>
+</html>

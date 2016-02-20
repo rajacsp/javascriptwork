@@ -1,0 +1,45 @@
+﻿<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script type="text/javascript">
+
+            var ts_component = function () {
+                // count[int], net[float.2], charges[float.2], gross[int]
+                this.count = 0;
+                this.net = parseFloat(String(0));
+                this.charges = parseFloat(String(0));
+                this.gross = 0;
+
+                this.update = function (count, net, charges, gross) {
+                    this.count = count;
+                    this.net = net;
+                    this.charges = charges;
+                    this.gross = gross;
+                }
+
+                this.reset = function () {
+                    this.count = 0;
+                    this.net = 0;
+                    this.charges = 0;
+                    this.gross = 0;
+                }
+            }
+
+            var sales_component = new ts_component();
+            sales_component.update(3435,
+            34.34,
+            22.22, 
+            4);
+
+            document.write(sales_component.charges);
+
+            sales_component.reset();
+
+            document.write(sales_component.gross);
+
+            
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

@@ -1,0 +1,74 @@
+
+topics:
+array toString vs join
+
+
+
+
+
+js_errors:
+------------------------------------------------------------------------------------------------------
+
+TypeError: document.getElementById('result') is null
+
+reason:
+</div
+
+            <div id="result">result</div>
+solution:
+</div>
+
+            <div id="result">result</div>
+------------------------------------------------------------------------------------------------------
+
+infinite loop
+for(var i=0;newAttributeArrayLength;i++){        }
+
+reason:
+no flag based condition
+------------------------------------------------------------------------------------------------------
+document.write('<script type="text/javascript" src="array_prototype.js"></script>');
+is not working
+
+
+------------------------------------------------------------------------------------------------------
+
+var ts_component = function () {
+                this.count = 0;
+
+                this.update_ts_component(sss)
+                {
+                    this.count = sss;
+                };
+            }
+
+reason:
+this.update_ts_component(sss)
+should be
+this.update_ts_component = function(sss)	
+------------------------------------------------------------------------------------------------------
+
+var record_state = "1"
+
+if(record_state == 1){
+	document.write("passed");
+}
+else {
+            document.write("failed");   
+}
+
+switch(record_state)
+{
+	case 0:
+		document.write("zero");
+		break;
+	
+	case 1:
+		document.write("one");
+		break;	
+}
+
+reason: switch is type sensitive
+------------------------------------------------------------------------------------------------------
+
+

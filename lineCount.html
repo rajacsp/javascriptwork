@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript">
+        // find all the \n
+        function lineCount(string) {
+            var lineNum = 0;
+            var startChar = 0;
+            var findLine = -1;
+            while (startChar < string.length) {
+                findLine = string.indexOf("\n", startChar);
+                document.write('f : '+findLine+'<br>');
+                if (findLine > 0) {
+                    lineNum++;
+                    startChar = findLine + 1;
+                }
+                else
+                    startChar = string.length;
+            }
+            return lineNum;
+        } //function-close line count
+
+        var myString = 'hello \n howare you \n how u doing?';
+        //myString = 'hell';
+        var lCount = lineCount(myString);
+
+        document.write(lCount);
+    </script>    
+</head>
+<body >
+</body>
+</html>

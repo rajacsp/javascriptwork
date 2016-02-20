@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Screen Width Test</title>
+<script type="text/javascript">
+    var a = new Array();
+    a.push("a-one");
+    a.push("a-two");
+
+    var b = new Array();
+    b = b.concat(a);
+    b.push("b-three");
+
+    document.write(a + "<br>");
+    document.write(b + "<br>");
+
+    document.write("<br>");
+
+    a.push("a-four");
+    b.push("b-five");
+
+    document.write(a + "<br>");
+    document.write(b + "<br>");
+    document.write("<br>");
+
+    b = b.concat(a);
+
+    document.write(a + "<br>");
+    document.write(b + "<br>");
+
+</script>
+
+</head>
+<body>
+</body>
+</html>

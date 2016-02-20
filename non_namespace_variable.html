@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">    
+    <script type="text/javascript">
+        var report = 4;
+        function report() {
+            this.align = 'center';
+            this.output = function () {
+                return 'this is an output';
+            };
+        }
+
+        document.write(report);
+        var myReport = new report();
+        document.write(myReport.align);
+        document.write(myReport.output());
+
+
+    </script>    
+</head>
+<body >
+</body>
+</html>

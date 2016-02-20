@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">    
+    <script type="text/javascript">
+        function tsValueFromText() {
+        }
+
+        function tsTextKeyDown() {
+        }
+
+        function tsSelectField() {
+        }
+
+        function tsTestValue() {
+        }
+
+        function tsSetFromPopup() {
+        }
+
+        function tsShiftToText() {
+        }
+
+        function tsPopupFocus() {
+        }
+
+        function tsPopupBlur() {
+        }
+
+        function updateVal() {
+            var newVal = document.getElementById('minutes::text').value;
+            //alert(newVal);
+
+            //insert new value into the select box
+            insertIntoSelectBox(newVal);
+        }
+
+        function insertIntoSelectBox(newVal) {
+            var selectDom = document.getElementById('minutes::select');
+            //alert(selectDom.length);
+
+            var option = document.createElement('option');
+            option.text = newVal;
+
+            var uniqueValue = checkUnique(selectDom, option.value);
+            if (uniqueValue) {
+                selectDom.insertBefore(option, selectDom.firstChild);
+            }
+            
+            selectDom.selectedIndex = 0;
+        }
+
+        function checkUnique(selectDom, newVal) {
+            for (var i = 0; i < selectDom.length; i++) {
+                //alert(popup.options[i].value);
+                if (newVal == selectDom.options[i].value)
+                    return false;
+            }
+            return true;
+        }
+    </script>    
+</head>
+<body >
+    <input name="minutes" id="minutes::text" value="02" type="text" size="5"
+     onChange="tsValueFromText(event, 'minutes' )" onKeyDown="tsTextKeyDown(event, 'minutes' )"
+      onFocus="tsSelectField(event, 'minutes' )" onBlur="tsTestValue(event, 'minutes' )">
+
+    <select class="selectbox" id="minutes::select" onChange="tsSetFromPopup(event, 'minutes' )"
+     onClick="tsShiftToText(event, 'minutes' )" onFocus="tsPopupFocus(event, 'minutes' )"
+      onBlur="tsPopupBlur(event, 'minutes' )" needsblur='0' isClicked='0' tabindex='-1'>
+        <option value='00'>00</option>
+        <option value='15'>15</option>
+        <option value='30'>30</option>
+        <option value='45'>45</option>
+    </select>
+
+    <input type="button" onclick="updateVal();" value="update" />
+</body>
+</html>

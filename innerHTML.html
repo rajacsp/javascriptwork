@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script type="text/javascript">
+            function check() {
+                var ihmlDom = document.getElementById('ihml');
+                alert("[" + ihmlDom.innerHTML.trim() + "]");
+            }
+
+            function check1() {
+                var ihmlDom1 = document.getElementById('ihml1');
+                alert("[" + ihmlDom1.innerHTML.trim() + "]");
+            }
+
+            function check2() {
+                alert("[" + document.getElementById('ihml1').innerHTML.trim() + "]");
+            }
+
+            function check3() {
+                var ihmlDom1 = document.getElementById('ihml1');
+                alert("[" + ihmlDom1.innerHTML.trim() + "]");
+            }
+
+            function check3() {
+                var ihmlDom1 = document.getElementById('ihml1');
+                alert("[" + ihmlDom1.innerHTML.trim() + "]");
+            }
+
+            //&nbsp;
+            function check4() {
+                var ihmlDom1 = document.getElementById('test');
+                alert("[" + ihmlDom1.innerHTML.trim() + "]");
+
+                // update innerHTML
+                ihmlDom1.innerHTML = "&nbsp;";
+                alert("[" + ihmlDom1.innerHTML.trim() + "]");
+
+                // replace child
+                var innerNode = ihmlDom1.firstChild;
+                alert(innerNode);
+                innerNode.nodeValue
+                alert("[" + innerNode.nodeValue.trim() + "]");
+            }
+        </script>
+    </head>
+    <body>
+           <div id="ihml">
+                 checking
+           </div>
+
+            <div id="ihml1">
+                 &nbsp;
+           </div>
+
+           <div id="test">
+                 hello
+           </div>
+
+           <input type="button" value="Check" onclick="check();" >
+           <input type="button" value="Check1" onclick="check1();" >
+           <input type="button" value="Check2" onclick="check2();" >
+           <input type="button" value="Check3" onclick="check3();" >
+           <input type="button" value="Check4" onclick="check4();" >
+    </body>
+</html>

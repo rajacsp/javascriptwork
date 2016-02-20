@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript">
+        function Employee(name) {
+            this.name = name;
+        }
+
+        Employee.prototype.setAge = function (age) {
+            this.age = age;
+        };        
+
+        var empA = Employee();
+        document.write("empA : "+empA);
+
+        document.write("<br>");
+
+        var empB = new Employee();
+        document.write(empB + ",");
+        document.write(empB.name);
+
+
+        document.write("<br>");
+
+        var empC = new Employee("raja");
+        document.write(empC + ",");
+        document.write(empC.name);
+
+        document.write("<br>");
+
+        var empD = new Employee("durai");
+        document.write(empD + ",");
+        document.write(empD.name + ",");
+        empD.setAge(32);
+        document.write(empD.age);
+
+    </script>    
+</head>
+<body >
+</body>
+</html>

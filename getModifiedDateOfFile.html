@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script type="text/javascript">
+            var modified_constant = "modified date :";
+            
+            // http://www.yaldex.com/wjscript/jsFileOpenAsTextStream.htm
+            function getIEFileModifiedDate(filePath)
+            {
+                var fso, f, ts, s;
+                var ForReading = 1, ForWriting = 2, ForAppending = 8;
+                var TristateUseDefault = -2, TristateTrue = -1, TristateFalse = 0;
+
+                fso = new ActiveXObject("Scripting.FileSystemObject");
+                f = fso.GetFile(filePath);
+                return f.DateLastModified;
+
+            }
+
+            function getFileModifiedDate(filePath) {
+                var f = System.IO.File.Exists(filePath);
+                alert(f);
+            }
+
+
+            var content = getFileModifiedDate("C:\\csp\\a_b.txt");
+            alert(content);
+
+            //document.write(modified_date);            
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

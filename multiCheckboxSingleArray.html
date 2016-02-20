@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript">
+
+        var jselectedZones = new Array();
+        var jselectedZonesSpecial = new Array();
+        var dl = "__";
+        function tsSetPriceZone(zoneString, elementCount, form) {
+            var selectedZone = getSelectedZone(zoneString + elementCount);
+            if (selectedZone == null || selectedZone == undefined || selectedZone == '' || selectedZone == 'select')
+                return;
+
+            // check for existing select option
+            var checkOption = dl + elementCount;
+            var selectedZoneSpecial = selectedZone + checkOption;
+            //var forcePreviousOptionFlag = canIForcePreviousOption(checkOption, selectedZoneSpecial);
+            forcePreviousOption(checkOption, selectedZoneSpecial);
+
+            jselectedZonesSpecial.uniquePush(selectedZoneSpecial);            
+
+            jselectedZones = jselectedZonesSpecial.clone();
+            jselectedZones.removeSpecialString(dl);
+            jselectedZones.removeDuplicates();
+            document.getElementById('selectedZonesSpecialDiv').innerHTML = jselectedZonesSpecial.toString();
+            document.getElementById('selectedZonesDiv').innerHTML = jselectedZones.toString();
+            
+            //document.getElementById('priceTypes').innerHTML = jsgetPriceTypes(jselectedZones);            
+        }
+
+        function forcePreviousOption(cCheckOption, cSelectedZoneSpecial)
+        {
+            for (var i = 0; i < jselectedZonesSpecial.length; i++) {
+                var cZone = jselectedZonesSpecial[i];
+
+                // find match with check option; if found, would return true
+                //alert(cZone.indexOf(cCheckOption));
+                if(cZone.indexOf(cCheckOption) != -1) {
+                    jselectedZonesSpecial.splice(i, 1); //remove the previous selected option                    
+                    jselectedZonesSpecial.push(cSelectedZoneSpecial);                    
+                    return;    
+                }
+            }            
+        }
+
+        function getSelectedZone(elementId) {
+            var cElement = document.getElementById(elementId);
+            if (cElement == null)
+                return null;
+            if (cElement.selectedIndex == -1)
+                return null;
+            return cElement.options[cElement.selectedIndex].value;
+        }
+
+        Array.prototype.uniquePush = function (element) {
+            if (!this.contains(element))
+                return this.push(element);
+        }
+
+        Array.prototype.contains = function (element) {
+            if (element == null || element == undefined || element == '')
+                return false;
+            for (var i = 0; i < this.length; i++) {
+                if (this[i] == element)
+                    return true;
+            }
+            return false;
+        }
+
+        Array.prototype.removeElement = function (element) {
+            if (element == null || element == undefined || element == '')
+                return;
+
+            var newArray = new Array();
+            for (var i = 0; i < this.length; i++) {
+                if (this[i] == element) {
+                    //continue;
+                    this.splice(i, 1);
+                }
+            }
+        }
+
+        Array.prototype.removeSpecialString = function (specialString) {
+            if (specialString == null || specialString == undefined || specialString == '')
+                return;
+
+            var newArray = new Array();
+            for (var i = 0; i < this.length; i++) {
+                //alert(this[i]+', '+this[i].indexOf(specialString));
+                if (this[i].indexOf(specialString) != -1) {
+                    this[i] = this[i].substring(0, this[i].indexOf(specialString));
+                }
+            }
+        }
+
+
+        Array.prototype.removeDuplicates = function () {
+            var newArray = new Array();
+            for (var i = 0; i < this.length; i++) {
+                for (var j = 0; j < this.length; j++) {
+                    if (i == j)
+                        continue;
+
+                    if (this[i] == this[j])
+                        this.splice(j, 1);
+                }
+            }
+        }
+
+        Array.prototype.clone = function () {
+            if (this == null || this == undefined || this.length == 0)
+                return this;
+
+            var newArray = new Array();
+            for (var i = 0; i < this.length; i++) {
+                newArray[i] = this[i];
+            }
+            return newArray;
+        }
+
+    </script>
+</head>
+<body>
+    <form name='multiForm'>
+    
+    <div id="lastSelected">        
+    </div>
+
+    <div id="selectedZonesSpecialDiv">
+        
+    </div>
+    <div id="selectedZonesDiv">
+        
+    </div>
+    <div id="priceTypes">
+        
+    </div>
+    <br /><br />
+    <select id='pzone1' name='pzone1' onchange="tsSetPriceZone('pzone', '1' ,this.form);">
+        <option value=''>Select</option>
+        <option value='zone_id_1'>Zone1</option>
+        <option value='zone_id_2'>Zone2</option>
+        <option value='zone_id_3'>Zone3</option>
+    </select>
+    <br /><br />
+    <select id='pzone2' name='pzone2' onchange="tsSetPriceZone('pzone', '2' ,this.form);">
+        <option value=''>Select</option>
+        <option value='zone_id_1'>Zone1</option>
+        <option value='zone_id_2'>Zone2</option>
+        <option value='zone_id_3'>Zone3</option>
+    </select>
+    <br /><br />
+    <select id='pzone3' name='pzone3' onchange="tsSetPriceZone('pzone', '3' ,this.form);">
+        <option value=''>Select</option>
+        <option value='zone_id_1'>Zone1</option>
+        <option value='zone_id_2'>Zone2</option>
+        <option value='zone_id_3'>Zone3</option>
+    </select>
+    </form>
+</body>
+</html>

@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">    
+    <script type="text/javascript">
+
+        var orderadmission_record_state = null;
+
+        var orderadmission_transaction_state = 0;
+        var orderadmission_amount = 0;
+        var orderadmission_net_paid_delta = 0;
+        var orderadmission_net = 0;
+
+        orderadmission_record_state = get_orderadmission_record_state();
+
+        function get_orderadmission_record_state() {
+
+            
+            /*** PAID IN ***/
+            // paid when admissions was sold
+            if (orderadmission_transaction_state == 0 && 
+                 (orderadmission_amount == 0 || orderadmission_net_paid_delta > 0)
+               )
+                    return 0;
+
+            // paid after the admission was sold
+            if (orderadmission_transaction_state == 1 && 
+                orderadmission_net_paid_delta > 0 &&
+                orderadmission_net_paid == orderadmission_net_paid_delta
+               )
+                return 0;
+
+
+            /*** PAID CHG ***/
+            // subsequent payments/refunds on the admission
+            if(orderadmission_transaction_state == 0 &&
+                orderadmission_net_paid > 0 &&
+                (  
+                    orderadmission_net_paid_delta != 0 ||
+                    orderadmission_incl_charge1_paid_delta != 0 ||
+                    orderadmission_incl_charge2_paid_delta != 0 ||
+                    orderadmission_incl_charge3_paid_delta != 0 ||
+                    orderadmission_incl_charge4_paid_delta != 0 ||
+                    orderadmission_incl_charge5_paid_delta != 0 ||
+                    orderadmission_add_charge1_paid_delta != 0 ||
+                    orderadmission_add_charge2_paid_delta != 0 ||
+                    orderadmission_add_charge3_paid_delta != 0 ||
+                    orderadmission_add_charge4_paid_delta != 0 ||
+                    orderadmission_add_charge5_paid_delta != 0
+                ) &&
+                orderadmission_net_paid != orderadmission_net_paid_delta
+              )
+                return 1;
+
+            // paid exchange return
+            if( orderadmission_transaction_state == 4 && (orderadmission_net_paid_delta < 0 || (orderadmission_net_delta == 0 && orderadmission_net == 0)))
+                return 1;
+
+            // paid exchange purchase
+            if(orderadmission_transaction_state = 3 && (orderadmission_net_paid_delta > 0 || (orderadmission_net_delta == 0 && orderadmission_net == 0)))
+                return 1;
+
+
+            /*** PAID OUT ***/
+            // from paid to unpaid
+            if(orderadmission_transaction_state == 1 && (orderadmission_net > 0 && orderadmission_net_paid == 0 && orderadmission_net_paid_delta < 0))
+                return 2;
+
+            // paid admission that is deleted from the order
+            if(orderadmission_transaction_state == 2 && (orderadmission_net_paid_delta < 0 || (orderadmission_net == 0 && orderadmission_net_delta == 0)))
+                return 2;
+        }    
+    </script>    
+</head>
+<body>
+    
+</body>
+</html>

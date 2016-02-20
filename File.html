@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript">
+
+        var fD = "a.txt";
+
+        // Check for the various File API support.
+        if (window.File && window.FileReader && window.FileList && window.Blob) {
+            // Great success! All the File APIs are supported.
+            document.write('ss');
+        } else {
+            alert('The File APIs are not fully supported in this browser.');
+        }
+
+        // check files exists or not
+
+
+       
+        
+    </script>    
+</head>
+<body >
+<input type="file" id="fileinput" />
+<script type="text/javascript">
+    function readSingleFile(evt) {
+        //Retrieve the first (and only!) File from the FileList object
+        var f = evt.target.files[0];
+
+        if (f) {
+            var r = new FileReader();
+            r.onload = function (e) {
+                var contents = e.target.result;
+                alert("Got the file.n"
+              + "name: " + f.name + "n"
+              + "type: " + f.type + "n"
+              + "size: " + f.size + " bytesn"
+              + "starts with: " + contents.substr(1, contents.indexOf("n"))
+        );
+            }
+            //r.readAsText(f);
+            document.write(r.size);
+        } else {
+            alert("Failed to load file");
+        }
+    }
+
+    document.getElementById('fileinput').addEventListener('change', readSingleFile, false);
+</script>
+
+    
+</body>
+</html>

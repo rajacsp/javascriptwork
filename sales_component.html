@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript">
+
+        var common_component = function () {
+            this.admission_count = 0;
+            this.net = parseFloat(String(0));
+            this.charge = parseFloat(String(0));
+            this.tax = parseFloat(String(0));
+            this.commission = parseFloat(String(0));
+            this.userTax1 = parseFloat(String(0));
+            this.userTax2 = parseFloat(String(0));
+            this.gross = parseFloat(String(0));
+
+            this.update_common_component = function (field) {
+                this.admission_count += parseInt(String(field.admission_count));
+                this.net += parseFloat(String(field.NET));
+                this.charge += parseFloat(String(field.CHG1));
+                this.tax += parseFloat(String(field.CHG2));
+                this.commission += parseFloat(String(field.CHG3));
+                this.userTax1 += parseFloat(String(field.CHG4));
+                this.userTax2 += parseFloat(String(field.CHG5));
+                this.gross += parseFloat(String(field.GROSS));
+            }
+        }
+
+
+        // net sales
+        var net_sales_object = new common_component();
+        var net_sales_field = function () {
+            this.admission_count = 3;
+            this.NET = 12;
+            this.CHG1 = 23;
+            this.CHG2 = 34;
+            this.CHG3 = 45;
+            this.CHG4 = 56;
+            this.CHG5 = 67;
+            this.GROSS = 78;
+        }
+        net_sales_object.update_common_component(net_sales_field);
+        
+
+        document.write(net_sales_object.admission_count0;
+                
+    </script>    
+</head>
+<body >
+</body>
+</html>

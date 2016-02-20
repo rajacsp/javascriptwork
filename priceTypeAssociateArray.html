@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript">
+
+        var b = function (){document.write("<br>")};
+
+        var priceTypeArray = new Array();
+        //priceTypeArray["pt1"] = "ptOne";
+        //priceTypeArray["pt2"] = "ptTwo";
+        priceTypeArray["pt3"] = "ptThree";
+
+        priceTypeArray["pt1"] = new Array();
+        priceTypeArray["pt1"]["price_type_label"] = "pt1 Label";
+
+        priceTypeArray["pt2"] = new Array();
+        priceTypeArray["pt2"]["price_type_label"] = "pt2 Label";
+
+        priceTypeArray["pt3"] = new Array();        
+        priceTypeArray["pt3"]["price_type_label"] = "pt3 Label";
+        
+        //if (priceTypeArray["pt3"]["price_zone_id"] == undefined)
+        //    priceTypeArray["pt3"] = new Array();
+
+        if (priceTypeArray["pt3"]["price_zone_id"] == undefined)
+            priceTypeArray["pt3"]["price_zone_id"] = new Array();
+
+        priceTypeArray["pt3"]["price_zone_id"]["pz1"] = "pzAlpha";
+        priceTypeArray["pt3"]["price_zone_id"]["pz2"] = "pzBeta";
+        
+        //priceTypeArray["pt3"]["price_zone_id"][1] = "pzBeta";
+        //"pzAlpha";
+
+        function getPriceTypes() {
+            var priceTypeString = '';
+            priceTypeString += '<colgroup><col span=4 width=250></col></colgroup>';
+            priceTypeString += '<tr>';
+            priceTypeString += '<th>Price Type ID</th>';
+            priceTypeString += '<th>Price Type Label</th>';
+            priceTypeString += '<th>Price Zone ID</th>';
+            priceTypeString += '<th>Price Zone Label</th>';
+            priceTypeString += '</tr>';
+
+            for (pGuid in priceTypeArray) {
+
+                priceTypeString += '<tr>';
+                priceTypeString += '<td>';
+                priceTypeString += pGuid;
+                priceTypeString += '</td>';
+                priceTypeString += '<td>';
+                priceTypeString += priceTypeArray[pGuid]["price_type_label"];
+                priceTypeString += '</td>';
+                priceTypeString += '<td>';
+
+                var pzArray = priceTypeArray[pGuid]["price_zone_id"];
+                                
+                if (pzArray != undefined) {
+                    for (pzGuid in pzArray) {
+                        priceTypeString += pzGuid + '<br>';
+                    }    
+                }
+                
+                priceTypeString += '</td>';
+                priceTypeString += '<td>';
+
+                if (pzArray != undefined) {
+                    for (pzGuid in pzArray) {
+                        priceTypeString += pzArray[pzGuid] + '<br>';
+                    }
+                }
+                
+                priceTypeString += '</td>';
+                priceTypeString += '</tr>';
+            }
+            return priceTypeString;
+        }
+
+        var tString = '<table border=1>';
+        tString += '<tbody>';
+        tString += getPriceTypes();
+        tString += '</tbody>';
+        tString += '</table>';
+
+        document.write(tString);
+
+        /*
+        document.write("pt2" + ' has value ' + priceTypeArray["pt2"]);
+        b();
+        document.write("pt3" + ' has price zone ' + priceTypeArray["pt3"]["price_zone_id"]["pz1"]);
+        b();
+        document.write("pt3" + ' has price zone ' + priceTypeArray["pt3"]["price_zone_id"]["pz2"]);
+        */
+    </script>    
+</head>
+<body >
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript">
+
+        function callMe() {
+            var abc = '<ul><li><input type="checkbox" name="wers"  value="" >Download&nbsp;<span class="required">*</span></nobr></li><li><input type="checkbox" name="B7::aswers"  value="" >Email&nbsp;<span class="required">*</span></nobr></li><li><input type="checkbox" name="s"  value="" >Hold for Pick Up&nbsp;<span class="required">*</span></nobr></li><li><input type="checkbox" name="Brs"  value="8" >Mail&nbsp;<span class="required">*</span></nobr></li><li><input type="checkbox" name="::answers"  value="" >Priority Post Courier&nbsp;<span class="required">*</span></nobr></li><li><input type="checkbox" name="BO"  value="04" >Window Sales&nbsp;<span class="required">*</span></nobr></li><li><br><input type="hidden" name="wers"  ></ul>';
+            var requiredSpan = '<span class="required">*</span>';
+
+            var newString = '';
+            if (abc.indexOf(requiredSpan)) {
+                newString = abc.split(requiredSpan).join("");
+            }
+            //document.getElementById('one').innerHTML = newString;
+
+            var warningString = '<td><div class="MultiList" style="float:left;width:auto;" ><ul><li><nobr><nobr><nobr><nobr><nobr><nobr><nobr>';
+            warningString += '<input type="checkbox" name="BOset::WSorder::Questions::A0DCEA02-506A-49A9-BE7E-9A8F56DF2214::answers"  ';
+            warningString += 'value="D8ECD06B-693D-463B-88B2-7E08A7194427" >Courier<img src="/Images/warning.png" title="Places must have a value.">';
+            warningString += '</nobr></li><li><input type="checkbox" name="BOset::WSorder::Questions::A0DCEA02-506A-49A9-BE7E-9A8F56DF2214::answers" ';
+            warningString += ' value="79A6A582-9766-4EAB-ADE5-86E643EB6810" >Download<img src="/Images/warning.png" title="Places must have a value.">';
+            warningString += '</nobr></li><li><input type="checkbox" name="BOset::WSorder::Questions::A0DCEA02-506A-49A9-BE7E-9A8F56DF2214::answers" ';
+            warningString += ' value="79A6A571-9766-4EAB-ADE5-86E643EB6810" >Email<img src="/Images/warning.png" title="Places must have a value.">';
+            warningString += '</nobr></li><li><input type="checkbox" name="BOset::WSorder::Questions::A0DCEA02-506A-49A9-BE7E-9A8F56DF2214::answers" ';
+            warningString += ' value="A966152D-2D6A-43C2-A673-89C455E528D3" >Hold for Pick Up<img src="/Images/warning.png" title="Places must have a value.">';
+            warningString += '</nobr></li><li><input type="checkbox" name="BOset::WSorder::Questions::A0DCEA02-506A-49A9-BE7E-9A8F56DF2214::answers" ';
+            warningString += ' value="89C612D2-0AC0-4218-8A75-2F2B22F98C51" >Mail<img src="/Images/warning.png" title="Places must have a value."></nobr>';
+            warningString += '</li><li><input type="checkbox" name="BOset::WSorder::Questions::A0DCEA02-506A-49A9-BE7E-9A8F56DF2214::answers" ';
+            warningString += ' value="425BB566-18D3-428B-9DC3-B3629FC1EEE5" >Priority Post Courier<img src="/Images/warning.png" title="Places must have a value.">';
+            warningString += '</nobr></li><li><input type="checkbox" name="BOset::WSorder::Questions::A0DCEA02-506A-49A9-BE7E-9A8F56DF2214::answers" ';
+            warningString += ' value="0D780821-38E1-4B56-8624-CA3F40F07A64" >Window Sales<img src="/Images/warning.png" title="Places must have a value."></nobr>';
+            warningString += '</li><li><br><input type="hidden" name="BOset::WSorder::Questions::A0DCEA02-506A-49A9-BE7E-9A8F56DF2214::answers"  ></li></ul>';
+            warningString += '</div></td>';
+            //alert(warningString);
+
+            newString = warningString;
+            var warningSpan = '<img src="/Images/warning.png" title="Places must have a value.">';
+            //alert(warningString.indexOf(warningSpan));
+            if (warningString.indexOf(warningString) != -1) {
+                //newString = warningString.split(warningSpan).join('');
+                //alert('newString : '+newString);
+            }
+            document.getElementById('one').innerHTML = newString;
+        }        
+    </script>
+</head>
+<body onload="callMe();">
+    <table width="60%" cellspacing="0" cellpadding="0" border="1">
+        <tbody>
+            <tr>
+                <td class="label" width="50%">
+                    R12: Please let us know where you heard about GRAND DESIGNS LIVE&nbsp;
+                </td>
+                <td>
+                    <div id='one'>
+                        jj
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

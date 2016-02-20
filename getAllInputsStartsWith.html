@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script type="text/javascript">
+            function getAllInputsStartsWith(stringPart) {
+                var inputs = document.getElementsByTagName('input');
+                //alert(inputs.length);
+
+                var fOneInputs = new Array(); //filer one
+                for (var i = 0; i < inputs.length; i++) {
+                    var cInput = inputs[i];
+                    if (!
+                        ((cInput.type == 'checkbox')
+                        ||
+                        (cInput.type == 'text')
+                        ||
+                        (cInput.type == 'hidden'))
+                    ) {
+                        continue;
+                    }
+                    fOneInputs.push(cInput);
+                }
+
+                //alert(fOneInputs.length);
+                var fTwoInputs = new Array();
+                for (var i = 0; i < fOneInputs.length; i++) {
+                    var cInput = fOneInputs[i];
+                    //match for string part
+                    if (cInput.id.indexOf(stringPart) != -1) {
+                        fTwoInputs.push(cInput);
+                    }
+                }
+                return fTwoInputs;
+            }
+
+            function changeCorrespondingInputs(stringPart) {
+                var inputs = getAllInputsStartsWith(stringPart);
+                //alert(inputs.length);
+                for (var i = 0; i < inputs.length; i++) {
+                    var cInput = inputs[i];
+                    //alert(cInput);
+                    if (cInput.type == 'checkbox') {
+                        cInput.checked = true;
+                    }
+                    else if (cInput.type == 'text') {
+                        cInput.value = 1;
+                    }
+                }
+            }
+
+
+            function up(msg) {
+                document.getElementById('c_out').innerHTML += msg + '<br>';
+            }
+
+        </script>
+    </head>
+    <body>
+        <div id="customer_1">
+            button : <input type="button" name="customer_1" id="customer_1_contact_1_button" value="2" /><br />
+            checkbox: <input type="checkbox" name="customer_1" id="customer_1_contact_1_checkbox" /><br />
+            file: <input type="file" name="customer_1" id="customer_1_contact_1_file" value="2" />            
+            hidden: <input type="hidden" name="customer_1" id="customer_1_contact_1_hidden" value="2" /><br />            
+            image: <input type="image" name="customer_1" id="customer_1_contact_1_image" value="2" /><br />            
+            password: <input type="password" name="customer_1" id="customer_1_contact_1_password" value="2" /><br />            
+            radio: <input type="radio" name="customer_1" id="customer_1_contact_1_radio" value="2" /><br />            
+            reset: <input type="reset" name="customer_1" id="customer_1_contact_1_reset" value="2" /><br />            
+            submit: <input type="submit" name="customer_1" id="customer_1_contact_1_submit" value="2" /><br />            
+            text: <input type="text" name="customer_1" id="customer_1_contact_1_text" value="2" /><br /><br />            
+        </div>
+        <br />
+        <div id="customer_2">
+            button: <input type="button" name="customer_2" id="customer_2_contact_1_button" value="2" /><br />
+            checkbox: <input type="checkbox" name="customer_2" id="customer_2_contact_1_checkbox" /><br />
+            file: <input type="file" name="customer_2" id="customer_2_contact_1_file" value="2" />            
+            hidden: <input type="hidden" name="customer_2" id="customer_2_contact_1_hidden" value="2" /><br />            
+            image: <input type="image" name="customer_2" id="customer_2_contact_1_image" value="2" /><br />            
+            password: <input type="password" name="customer_2" id="customer_2_contact_1_password" value="2" /><br />            
+            radio: <input type="radio" name="customer_2" id="customer_2_contact_1_radio" value="2" /><br />            
+            reset: <input type="reset" name="customer_2" id="customer_2_contact_1_reset" value="2" /><br />            
+            submit: <input type="submit" name="customer_2" id="customer_2_contact_1_submit" value="2" /><br />            
+            text: <input type="text" name="customer_2" id="customer_2_contact_1_text" value="2" /><br /><br />            
+        </div>
+
+        <br />
+        <input type="button" value="get All inputs 1" name="customer_1" onclick="changeCorrespondingInputs('customer_1');" />
+        <input type="button" value="get All inputs 2" name="customer_2" onclick="changeCorrespondingInputs('customer_2');" />
+        <div id="c_out">            
+        </div>
+    </body>
+</html>
