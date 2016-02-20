@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script type="text/javascript">
+            function getNextTwelve(currentMonth) {
+                var numberSet = new Array();
+
+                for (i = 0; i < 12; i++) {
+                    var currentNumber = 0;
+                    if (currentMonth > 11) {
+                        currentMonth = 0;
+                        currentNumber = currentMonth++;
+                        
+                    } else {
+                        currentNumber = currentMonth++;
+                    }
+                    numberSet[i] = currentNumber;
+                }
+                return numberSet;
+            }
+
+            function getMonths(numberSet) {
+                var monthSet = new Array();
+                for (i = 0; i < numberSet.length; i++) {
+                    monthSet[i] = longMonthsOfYear[numberSet[i]];
+                }
+                return monthSet;        
+            }
+            var longMonthsOfYear = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'Novmber', 'December'];
+            //alert(getNextTwelve(7));
+            alert(getMonths(getNextTwelve(2))); 
+        </script>
+    </head>
+    <body>
+           <div id="ihml">
+                 checking
+           </div>
+    </body>
+</html>

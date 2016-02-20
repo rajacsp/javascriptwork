@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script type="text/javascript">
+            var fruits = new Array();
+            
+            fruits.push = "Banana";
+            fruits.push = "Orange";
+            fruits.push = "Apple";
+            fruits.push = "Mango";
+
+            fruits.removeByValue('Orange');
+
+            alert(fruits);
+
+            Array.prototype.removeByValue = function(val) {
+                for(var i=0; i<this.length; i++) {
+                    if(this[i] == val) {
+                        this.splice(i, 1);
+                        break;
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

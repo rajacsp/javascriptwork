@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">    
+    <script type="text/javascript">
+        var rows = new Array();
+        function row(id, title, sales_object, price_changes_object, returns_object, net_sales_object, net_percentage_object) {
+            //find the match if any
+            for (i = 0; i < rows.length; i++) {
+                var currentRow = rows[i];
+                if (currentRow.id == id) {
+                    currentRow.id = id;
+
+                    currentRow.title = title;
+                    currentRow.sales_object = sales_object;
+                    currentRow.price_changes_object = price_changes_object;
+                    currentRow.returns_object = returns_object;
+                    currentRow.net_sales_object = net_sales_object;
+                    currentRow.net_percentage_object = net_percentage_object;
+                    rows[i] = currentRow;
+                    return;
+                }
+            }
+
+            // push at last
+            this.id = id;
+
+            this.title = title;
+            this.sales_object = sales_object;
+            this.price_changes_object = price_changes_object;
+            this.returns_object = returns_object;
+            this.net_sales_object = net_sales_object;
+            this.net_percentage_object = net_percentage_object;
+            rows.push(this);
+        }
+
+        function getrowDetails(id) {
+            if (rows == null || rows.length == 0 || id == null || id == '')
+                return null;
+
+            for (i = 0; i < rows.length; i++) {
+                var currentRow = rows[i];
+                if (currentRow.id == id) {
+                    return currentRow;
+                }
+            }
+            return null;
+        }
+
+        var addrow = function (id, title, sales_object, price_changes_object, returns_object, net_sales_object, net_percentage_object) {
+            new row(id, title, sales_object, price_changes_object, returns_object, net_sales_object, net_percentage_object);
+        }
+
+        var rowIndex = 0;
+        for (var i = 0; i < 3; i++) {
+            var title = 'title '+i;
+            var sales_object = ['sales_obj'+i];
+            var price_changes_object = ['changes_obj' + i];
+            var returns_object = ['returns_obj' + i];
+            var net_sales_object = ['net_sales_obj' + i];
+            var net_percentage_object = ['net_percentages_obj' + i];
+
+            addrow(rowIndex++, title, sales_object, price_changes_object, returns_object, net_sales_object, net_percentage_object);
+        }
+
+        function init() {
+            outputRecords();  
+        }
+
+        function outputRecords()
+        {
+            var rowLegnth = rows.length;
+            //alert(rowLegnth);
+            for(var i=0;i<rowLegnth;i++)
+            {
+                var currentRow = rows[i];
+
+                var title = currentRow.title;
+                var sales_object = currentRow.sales_object;
+                var price_changes_object = currentRow.price_changes_object;
+                var returns_object = currentRow.returns_object;
+                var net_sales_object = currentRow.net_sales_object;
+                var net_percentage_object = currentRow.net_percentage_object;
+        
+                testContent(title);        
+            }
+        }
+
+        function testContent(msg)
+        {
+            document.write(msg+"<br>");
+        }
+    </script>    
+</head>
+<body onload="init();" >
+    <div  id="s">
+    </div>
+</body>
+</html>

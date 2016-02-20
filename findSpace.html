@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script type="text/javascript">
+
+            var limit = 15;
+            var lineBreak = '<br>';
+
+            var content = "Internet Performance Total comes from here";
+            var wrappedContent = wrapContent(content, limit, lineBreak);
+            document.write(wrappedContent);
+
+            document.write("<br><br>");
+
+            content = "InternetPerformanceTotalcomesfromhere";
+            wrappedContent = wrapContent(content, limit, lineBreak);
+            document.write(wrappedContent);
+
+
+            function wrapContent(content, limit, lineBreak, oldContent)
+            {
+                if (content.length < limit)
+                    return content;
+
+                var firstIndexAfterLimit = content.indexOf(" ", limit, lineBreak);
+                //document.write("firstIndexAfterLimit" + firstIndexAfterLimit);
+                if (firstIndexAfterLimit > 0) {
+                    var newContent = content.substring(0, firstIndexAfterLimit) + lineBreak + content.substring(firstIndexAfterLimit);
+                    return newContent;
+                }
+
+                // if no space after limit
+                var newContent = content.substring(0, limit) + "-" + lineBreak + content.substring(limit);
+                return newContent;
+            }
+        </script>
+    </head>
+    <body>        
+    </body>
+</html>

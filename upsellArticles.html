@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript">
+
+        function getSelectedPerformances() {
+            var performances = new Array();
+            var upsell_articles = new Array();
+
+            var resultForm = document.forms["tsSearchResultForm"];
+            var resultFormeElements = document.forms["tsSearchResultForm"].elements;
+            var performanceIds = document.forms["tsSearchResultForm"].elements["BOset::BOmap::seatmap::performance_ids"];
+
+            if (resultForm == undefined || resultFormeElements == undefined || performanceIds == undefined) {
+                return null;
+            }
+
+            if (performanceIds.length == undefined) {
+                if (performanceIds.checked) {
+                    performances.push(performanceIds.value);
+                }
+            } else {
+                for (var x = performanceIds.length - 1; x >= 0; x--) {
+                    if (performanceIds[x].checked) {
+                        //alert('performanceIds[x].value : ' + performanceIds[x].value);
+                        performances.push(performanceIds[x].value);
+                    }
+                }
+            }
+            return performances;
+        }
+
+        function tsSelectUpsellArticles(performance_id) {
+            if (document.forms["tsSearchResultForm"].elements[performance_id + "_BOparam::BOcontent::loadArticle::article_id"])
+                return document.forms["tsSearchResultForm"].elements[performance_id + "_BOparam::BOcontent::loadArticle::article_id"].value;
+            else
+                return null;
+        }
+
+        function tsSelectBestAvailable() {
+
+            var performances = getSelectedPerformances();
+
+            if (performances.length > 0) {
+
+                // check for upsell addon
+                // right now provide upsell addon without checking; later you can check for upsell addon is attached to the performance or not
+                var upsellArticleId = '';
+                if (performances.length == 1) {
+                    // upsell applicable only for one performance :: deciding call will be made later
+                    var upsellArticleId = tsSelectUpsellArticles(performances[0]);
+
+                    if (!upsellArticleId) {
+                        // some problem occurred while getting upsellArticle id; alert something
+                        alert('error');
+                        return;
+                    }
+
+                    var desktopVer = true;                    
+                    var extraParam = "&BOparam::BOcontent::loadArticle::getUpsell=1";
+                    var msg = 'seatSearch.asp : ';
+                    //msg += '\n sTokenName : ' + sTokenName;
+                    //msg += '\n sToken : ' + sToken;
+                    msg += '\n articleId : ' + upsellArticleId;
+                    msg += '\n contextId : ' + performances[0];
+                    msg += '\n extraParam : ' + extraParam;
+                    alert(msg);
+
+                    var url = '../loadArticleDesktop.asp';
+                    url += '?BOparam::BOcontent::loadArticle::article_id='+upsellArticleId;
+                    url += '&BOparam::BOcontent::loadArticle::context_id='+performances[0];
+                    url += '&BOparam::BOcontent::loadArticle::getUpsell=1';
+
+                    if (desktopVer) {
+                        //loadArticle(sTokenName, sToken, upsellArticleId, performances[0], extraParam);
+                    } else {
+                        //showUpsellPopup('title', url, 'alert();');
+                    }
+
+                } else {
+                    alert('upsell not applicable');
+                }
+
+                //document.forms[ "tsSearchResultForm" ].action = "seatBestAvail.asp";
+                //document.forms[ "tsSearchResultForm" ].submit();
+            } else {
+                alert("Please select at least one performance for best available!");
+            }
+        }
+    </script>
+</head>
+<body>
+    <form name="tsSearchResultForm" action="seatSearch.asp" method="POST">
+    <input type="checkbox" id="performance0" name="BOset::BOmap::seatmap::performance_ids"
+        value="501E9DEE-E684-493D-9406-A79C95A1D3FB">one &nbsp;&nbsp;&nbsp;
+    <input type="hidden" id="upsell_article0" name="501E9DEE-E684-493D-9406-A79C95A1D3FB_BOparam::BOcontent::loadArticle::article_id"
+        value="first">upsell_article ONE
+    <br />
+    <input type="checkbox" id="performance1" name="BOset::BOmap::seatmap::performance_ids"
+        value="301E9DEE-E684-493D-9406-A79C95A1D3FB">two &nbsp;&nbsp;&nbsp;
+    <input type="hidden" id="upsell_article1" name="301E9DEE-E684-493D-9406-A79C95A1D3FB_BOparam::BOcontent::loadArticle::article_id"
+        value="second">upsell_article Two
+
+    <input id="Hidden1" type="hidden" value="47AE2C98-7EFD-482B-9CD7-BCB1E11ACFF3" name="301E9DEE-E684-493D-9406-A79C95A1D3FB_BOparam::BOcontent::loadArticle::article_id"">
+    <br />
+    <input type="checkbox" id="performance2" name="BOset::BOmap::seatmap::performance_ids"
+        value="31C9B2DE-C89B-4DE3-B4D9-F16B2C813E1F">three &nbsp;&nbsp;&nbsp;
+    <input type="hidden" id="upsell_article2" name="3C9B2DE-C89B-4DE3-B4D9-F16B2C813E1F_BOparam::BOcontent::loadArticle::article_id"
+        value="third">upsell_article Three
+    <br />
+    <input type="checkbox" id="performance3" name="BOset::BOmap::seatmap::performance_ids"
+        value="6EDEB5F0-F4EB-423F-8F6C-CE8B3D1048C3">four &nbsp;&nbsp;&nbsp;
+    <input type="hidden" id="upsell_article3" name="6EDEB5F0-F4EB-423F-8F6C-CE8B3D1048C3_BOparam::BOcontent::loadArticle::article_id"
+        value="fourth">upsell_article Four
+    <br />
+    <input type="checkbox" id="performance4" name="BOset::BOmap::seatmap::performance_ids"
+        value="3BAAF6D0-E99C-49D3-8903-325AAC25A506">five &nbsp;&nbsp;&nbsp;
+    <input type="hidden" id="upsell_article4" name="3BAAF6D0-E99C-49D3-8903-325AAC25A506_BOparam::BOcontent::loadArticle::article_id"
+        value="fifth">upsell_article Five
+    <br />
+    <input type="button" name="bestavail" value="Best Available" onclick="tsSelectBestAvailable()">
+    </form>
+</body>
+</html>

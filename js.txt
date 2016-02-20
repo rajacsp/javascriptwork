@@ -1,0 +1,34 @@
+
+From Higher Performance Javascript:
+
+IE 8, Firefox 3.5, Safari 4 and Chrome 2 all allow parallel js downloads.
+
+Keeping the script tags as close to the bottomof the body tag as possible, is the Yahoo exceptional
+performance team's first rule about Javascript: put scripts at the bottom
+
+Steve Souders recommendation:
+	Never keep an inline script after a <link> tag for this reason.
+
+Downloading one single 100 kb file will be faster than downloading four 25 kb files.
+
+using deferred scripts
+
+HTML 4 defines 
+
+http://www.w3.org/TR/html401/interact/scripts.html#adef-defer
+
+defer attribute in <script>
+
+when set, this boolean attribute provides a hint to the user agent that the script is not going to 
+generate any document content(e.g., no "document.write" in javascript) and thus, the user agent
+can continue parsing and rendering
+
+defer is supported by IE 4+, FF 3.5+
+
+Any <script> element marked with defer will not execute until after the DOM has been completely loaded.
+This holds true for inline scripts as well as external script files.
+
+live_code:
+total	sql	js	processed_rows
+345.9	345.639	.32	104
+

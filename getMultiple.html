@@ -1,0 +1,22 @@
+﻿<html>
+    <head>        
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script type="text/javascript">
+            function init()
+            {
+                var element = document.getElementById('zone_id');
+                var eMul = element.getAttribute("multipl");
+                document.getElementById('result').innerHTML = "["+(typeof eMul)+", "+eMul.length+"]";
+            }
+        </script>
+    </head>
+    <body onload="init();">
+        <select id="zone_id" name="zone" multiple1>
+            <option value="zone1" selected>Zone One</option>
+            <option value="zone2">Zone Two</option>
+            <option value="zone3">Zone Three</option>
+        </select>
+
+        <div id="result"></div>
+    </body>
+</html>

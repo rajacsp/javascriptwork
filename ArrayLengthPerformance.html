@@ -1,0 +1,87 @@
+﻿<html>
+    <head>        
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script type="text/javascript">
+            
+            var arrayLimit = 4000000;
+            var randomNumberLimit = 1000;            
+            var iArray = new Array();
+            iArray = fillArray(iArray, arrayLimit);
+
+            // while test
+            testPlainWhile();
+            testOptimizedWhile();
+
+            // for test
+            //testPlainFor();
+            //testOptimizedFor();
+
+            function testPlainWhile()
+            {
+                var i =0 ;
+                var msg = '';
+                var start_1 = new Date();
+                while (i < iArray.length)
+                {                    
+                    i++;                    
+                }
+                var end_1 = new Date();
+                document.write('<br>processing time[plain_while] : ' + (end_1 - start_1));
+            }
+
+            function testOptimizedWhile() {
+                var i = 0;
+                var msg = '';
+                var start_2 = new Date();
+                var iLength = iArray.length;
+                while (i < iLength) {
+                    i++;
+                }
+                var end_2 = new Date();
+                document.write('<br>processing time[optimized_while] : ' + (end_2 - start_2));
+            }
+
+            function testPlainFor() {
+                var msg = '';
+                var start_3 = new Date();
+                for (var i = 0; i < iArray.length; i++)
+                {
+                    
+                }
+                var end_3 = new Date();
+                document.write('<br>processing time[plain_for] : ' + (end_3 - start_3));
+            }
+
+            function testOptimizedFor() {
+                var i = 0;
+                var msg = '';
+                var start_4 = new Date();
+                var iLength = iArray.length;
+                for (var i = 0; i < iLength; i++)
+                {
+                    
+                }
+                var end_4 = new Date();
+                document.write('<br>processing time[optimized_for] : ' + (end_4 - start_4));
+            }
+
+            function fillArray(ar, limit)
+            {
+                for (var i = 0; i < limit; i++)
+                {
+                    ar.push(genRandomNumber(randomNumberLimit));
+                }                
+                ar.sort();
+                return ar;
+            }
+            
+            function genRandomNumber(limit)
+            {
+                return Math.floor((Math.random() * limit) + 1);
+            }
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript">
+
+        var payments_row = new Array();
+        var payment_total_amount = parseFloat(0);
+
+        var payment_component = function (method_id, method_name, amount)
+        {
+            this.method_id = method_id;
+            this.method_name = method_name;
+            this.amount = amount;
+        }       
+
+        function addPayment(method_id, method_name, amount)
+        {            
+            var payment_row_length = payments_row.length;
+            payment_total_amount += parseFloat(amount); // add total 
+
+            if (payment_row_length == 0)
+            {
+                var current_payment = new payment_component(method_id, method_name, amount);
+                //document.write('current_payment.method_id : ' + current_payment.method_id + ', method_id : ' + method_id);
+                payments_row.push(current_payment);               
+                return;
+            }
+            
+            for (var i = 0; i < payment_row_length; i++)
+            {
+                var current_payment_component = payments_row[i];
+                //document.write('current_payment_component.method_id : ' + current_payment_component.method_id);
+                if(current_payment_component.method_id == method_id)
+                {
+                    // update || add new details                    
+                    current_payment_component.amount += parseFloat(amount);
+                    payments_row[i] = current_payment_component;
+                    return;
+                }
+            }
+
+            // not existing before
+            var current_component = new payment_component(method_id, method_name, amount);
+            payments_row.push(current_component);
+            return;            
+        }
+        addPayment('id-one', 'Cash', 33);
+        addPayment('id-one', 'Cash', 24);
+        addPayment('id-two', 'Cash', 24);
+        addPayment('id-one', 'Cash', 24);
+
+        for (var i = 0; i < payments_row.length; i++)
+        {
+            document.write(payments_row[i].method_id + " - " + payments_row[i].method_name + " - " + payments_row[i].amount+" - "+payment_total_amount);
+            document.write("<br>");
+        }
+
+    </script>    
+</head>
+<body >
+</body>
+</html>

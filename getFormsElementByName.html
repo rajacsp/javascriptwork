@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">        
+</head>
+<body>
+    <form method="get" action="plain.html" name="f1form" >
+        <input type="hidden" name="f1h1" value="f1h1_value" />
+    </form>
+
+    <form method="post" action="plain.html" name="f2form">
+        <input type="hidden" name="f2h1" value="f2h1_value" />
+    </form>
+
+    <script type="text/javascript">
+        var docForm = document.forms[0];
+        document.write(docForm.f1h1.value);
+
+        document.write('<br>')
+
+        var docForm2 = document.forms['f2form'];
+        document.write(docForm2.f2h1.value);
+    </script>
+</body>
+</html>

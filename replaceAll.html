@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">    
+    <script type="text/javascript">
+        var base = 'Message 1 <br> Message 2 <br> Message 3';
+        var searchingPart = '<br>';
+
+        // generalized string prototype
+        String.prototype.replaceAll = function (str1, str2, ignore) {
+            return this.replace(new RegExp(str1.replace(/([\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g, function (c) { return "\\" + c; }), "g" + (ignore ? "i" : "")), str2);
+        };
+
+        var newBase = base.replaceAll(searchingPart, "\n");
+        alert(newBase);
+    </script>    
+</head>
+<body >
+</body>
+</html>

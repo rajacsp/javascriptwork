@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript">
+
+        var sales_total_object = new total_component();
+        document.write(sales_total_object.total_net);
+
+        var total_component = function () {
+            this.total_admission_count = 0;
+            this.total_net = 0;
+            this.total_charge = 0;
+            this.total_tax = 0;
+            this.total_commission = 0;
+            this.total_userTax1 = 0;
+            this.total_userTax2 = 0;
+            this.total_gross = 0;
+
+            this.update_total_component = function (field) {
+                this.total_admission_count = field.admission_count;
+                this.total_net = field.NET;
+                this.total_charge = field.CHG1;
+                this.total_tax = field.CHG2;
+                this.total_commission = field.CHG3;
+                this.total_userTax1 = field.CHG4;
+                this.total_userTax2 = field.CHG5;
+                this.total_gross = field.GROSS;
+            }
+        }
+
+        
+
+        
+    </script>    
+</head>
+<body >
+</body>
+</html>

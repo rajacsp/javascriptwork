@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript">
+
+        var users = new Array();
+
+
+        function user(id, firstName, lastName, city, country)
+        {
+
+            //alert('id : '+id);
+            //find the match if any
+            for (i = 0; i < users.length; i++) {
+                var currentUser = users[i];
+                if (currentUser.id == id) {
+                    currentUser.id = id;
+                    currentUser.firstName = firstName;
+                    currentUser.lastName = lastName;
+                    currentUser.city = city;
+                    currentUser.country = country;
+                    users[i] = currentUser;
+                    return;
+                }
+            }
+
+            // push at last
+            this.id = id;
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.city = city;
+            this.country = country;
+            users.push(this);
+            //alert(users.length);
+        }
+
+        user.prototype.getUserDetails = function(id)
+        {            
+            if(users == null || users.length == 0)
+                return null;
+
+            for(i=0;i<users.length;i++){
+                var currentUser = users[i];
+                //alert('currentUser.id : '+currentUser.id);
+                if(currentUser.id == id)
+                {
+                    return currentUser;
+                }
+            }
+            return null;
+        }
+
+        user.prototype.showUserDetails = function(user)
+        {
+            var currentUser = getUserDetails(user.value);
+            //alert(currentUser+', '+id);
+            document.getElementById('first_name').innerHTML = currentUser.firstName;
+            document.getElementById('last_name').innerHTML = currentUser.lastName;
+            document.getElementById('city').innerHTML = currentUser.city;
+            document.getElementById('country').innerHTML = currentUser.country;
+        }
+
+        user.prototype.addUser = function(id, firstName, lastName, city, country) {
+            new user(id, firstName, lastName, city, country );
+        }
+
+        addUser('123', 'Raja', 'Raman', 'Toronto', 'Canada' );
+        addUser('124', 'Durai', 'Murugan', 'Chennai', 'Indian');
+        //alert(users.length);
+             
+    </script>    
+</head>
+<body >
+    <div>
+        <select id="user_name" onchange="showUserDetails(this);" >
+            <option value="select">Select</option>
+            <option value="123">Raja</option>
+            <option value="124">Durai</option>
+        </select>
+    </div>
+
+    <div id="ad_details">
+        <div id="first_name"></div>
+        <div id="last_name"></div>
+        <div id="city"></div>
+        <div id="country"></div>
+    </div>
+</body>
+</html>

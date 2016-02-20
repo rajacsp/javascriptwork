@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">    
+    <script type="text/javascript">
+
+        function getUrl(url) {
+            var http = new ActiveXObject("microsoft.xmlhttp");
+            http.open("GET", url, false);
+            http.send();
+            //return http.responseText;
+            return http;
+        }
+
+        theFile = getUrl('http://www.justcsp.com/txt/recent/Food.txt');
+
+        document.write(theFile);
+    </script>    
+</head>
+<body >    
+</body>
+</html>

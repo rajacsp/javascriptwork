@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script type="text/javascript">
+            var modified_constant = "modified date :";
+            
+            // http://www.yaldex.com/wjscript/jsFileOpenAsTextStream.htm
+            function readFile(filePath)
+            {
+                var fso, f, ts, s;
+                var ForReading = 1, ForWriting = 2, ForAppending = 8;
+                var TristateUseDefault = -2, TristateTrue = -1, TristateFalse = 0;
+
+                fso = new ActiveXObject("Scripting.FileSystemObject");
+                f = fso.GetFile(filePath);
+                ts = f.OpenAsTextStream(ForReading, TristateUseDefault);
+                s = ts.ReadAll();
+                ts.Close();
+                return (s);
+            }
+
+            
+            var content = readFile("C:\\csp\\a_b.txt");
+            //alert(content);
+
+            var content_array = content.split("\n");
+
+            var modified_date = "";
+            for (var i = 0; i < content_array.length; i++) {
+                var currentLine = content_array[i];
+                //document.write("[" + i + "] : " + currentLine + "<br>");
+                if (currentLine.indexOf(modified_constant) != -1) {
+                    modified_date = currentLine.substring(currentLine.indexOf(modified_constant) + modified_constant.length);
+                }
+            }
+
+            document.write(modified_date);
+            
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

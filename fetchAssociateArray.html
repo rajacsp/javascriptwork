@@ -1,0 +1,29 @@
+﻿<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script type="text/javascript">
+            var myArray = new Date();
+            if (myArray["a"] == undefined)
+                myArray["a"] = new Array;
+
+            if (myArray["a"]["b"] == undefined)
+                myArray["a"]["b"] = new Array;
+
+            if (myArray["a"]["b"]["c"] == undefined)
+                myArray["a"]["b"]["c"] = new Array;
+
+
+            myArray["a"]["b"]["c"]["name"] = "Raja";
+            myArray["a"]["b"]["c"]["amount"] = "16";
+
+            //document.write(myArray["a"]["b"]["c"]["amount"]);
+
+            var b = myArray["a"];
+            document.write(b["b"]["c"]["amount"]);
+
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

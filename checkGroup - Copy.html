@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript">
+        function callMe(a) {
+            //alert(a);
+
+            var c = getSelectedItems('one', 'test');
+            alert(c);
+        }
+
+        // generalized function to get the selected items (applicable for gifts, performances, etc)
+        function getSelectedItems(formName, elementName) {
+
+            if (!formName || !elementName) { // if either of these two elements null/empty, you are grounded
+                return -1;
+            }
+
+            var tForm = document.forms[formName];
+            var id = elementName;
+
+            if (tForm == undefined || tForm.elements == undefined || tForm.elements[id] == undefined) {
+                return -1;
+            }
+
+            var gifts = new Array();
+            var gIdElement = tForm.elements[id];
+
+            if (gIdElement.length == undefined) { // if the element is undefined, it should be a single checkbox
+                if (gIdElement.checked) {
+                    //gifts.push(gIdElement.value);
+                    return x;
+                }
+                return -1;
+            }
+
+            for (var x = gIdElement.length - 1; x >= 0; x--) {
+                if (gIdElement[x].checked) {
+                    //gifts.push(gIdElement[x].value);
+                    return x;
+                }
+            }
+            return -1;
+        }
+
+
+
+    </script>    
+</head>
+<body >
+    <form name="one">
+        <input type="checkbox" value="1" name="test" onclick=callMe(this); />one
+        <br />
+        <input type="checkbox" value="2" name="test" onclick=callMe(this); />one
+        <br />
+        <input type="checkbox" value="3" name="test" onclick=callMe(this); />one
+        <br />
+        <input type="checkbox" value="4" name="test" onclick=callMe(this); />one
+        <br />
+        
+    </form>
+</body>
+</html>

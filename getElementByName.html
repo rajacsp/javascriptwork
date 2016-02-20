@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script type="text/javascript">
+            function getAllInputsStartsWith(StringPart) {
+                var inputs = document.getElementsByTagName('input');
+                for (var i = 0; i < inputs.length; i++) {
+                    if (!
+                        (inputs[i].type == 'checkbox')
+                        ||
+                        (inputs[i].type == 'text')
+                        ||
+                        (inputs[i].type == 'hidden')
+                    ) {
+                        continue;
+                    }
+                }
+            }
+
+            function selectCustomer(cBox, customerId)
+            {
+                if (cBox.checked) {
+                    // cbox is checked; so do positive task [pt]
+                    checkAllInputsForTheCustomer(cBox, customerId);    
+                } else {
+                    // cbox is unchecked; so do negative task [nt]
+                    uncheckAllInputsForTheCustomer(cBox, customerId);    
+                }
+            }
+
+            //positive task
+            function checkAllInputsForTheCustomer(cBox, customerId) {
+                //alert(customerId);
+                var inputs = document.getElementsByName("customer_"+customerId);
+                //alert(inputs.length);
+
+                for (var i = 0; i < inputs.length; i++) {
+                    var cInput = inputs[i];
+                    //alert(cInput.id);
+
+
+                    if (cInput.type == 'checkbox') {
+                        //if checkbox, check them
+                        cInput.checked = true;                        
+                    } else if (cInput.type == 'text') {
+                        //if text, change the value 1
+                        cInput.value = '1';
+                    }
+                }
+            }
+
+            //negative task
+            function uncheckAllInputsForTheCustomer(cBox, customerId) {
+
+            }
+        </script>
+    </head>
+    <body>
+        <div id="customer_1">
+            <input type="checkbox" name="customer_1" id="customer_1_contact_1" />
+            <input type="text" name="customer_1" id="customer_1_contact_1_text" value="2" />
+            <br />
+            <input type="checkbox" name="customer_1" id="customer_1_contact_2" />
+            <input type="text" name="customer_1" id="customer_1_contact_2_text" value="2" />
+        </div>
+        <br /><br />
+        <div id="customer_2">
+            <input type="checkbox" name="customer_2" id="customer_2_contact_1" />
+            <input type="text" name="customer_2" id="customer_2_contact_1_text" value="2" />
+            <br />
+            <input type="checkbox" name="customer_2" id="customer_2_contact_2" />
+            <input type="text" name="customer_2" id="customer_2_contact_2_text" value="2" />
+        </div>
+
+        <br />
+        <input type="radio" name="customer" onclick="selectCustomer(this, 1);" /> Customer 1 <br />
+        <input type="radio" name="customer" onclick="selectCustomer(this, 2);" /> Customer 2
+        <!--<input type="radio" name="customer" onclick="selectCustomer(this, 3);" /> Customer 3
+        <input type="radio" name="customer" onclick="selectCustomer(this, 4);" /> Customer 4-->
+    </body>
+</html>

@@ -1,0 +1,85 @@
+﻿<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script type="text/javascript">
+            var allocationArray = new Array();
+
+            //document.write(allocationArray["xyz"] == undefined); //true
+            
+            
+            // 2 store: Box Office,	Star Trek, 301E9DEE-E684-493D-9406-A79C95A1D3FB, Star Trek Performance,	50.000000
+            // 3 store: Box Office,	Star Trek, A4F0BA58-C9F0-4BEB-9244-FF77A5F60EDE, Star Trek GST Performance, 10.000000
+            // 4 store: Internet,	Star Trek, 301E9DEE-E684-493D-9406-A79C95A1D3FB, Star Trek Performance,	10.000000
+
+
+            // 1 store: Box Office, Internet Test Series, 501E9DEE-E684-493D-9406-A79C95A1D3FB, Internet Performance, 10.000000            
+            if(allocationArray["Box Office"] == undefined)
+            {
+                allocationArray["Box Office"] = new Array();
+            }
+
+            if(allocationArray["Box Office"]["Internet Test Series"] == undefined)
+            {
+                allocationArray["Box Office"]["Internet Test Series"] = new Array();
+            }
+            
+            if(allocationArray["Box Office"]["Internet Test Series"]["501E9DEE-E684-493D-9406-A79C95A1D3FB"] == undefined)
+            {
+                allocationArray["Box Office"]["Internet Test Series"]["501E9DEE-E684-493D-9406-A79C95A1D3FB"] = new Array();
+            }
+            allocationArray["Box Office"]["Internet Test Series"]["501E9DEE-E684-493D-9406-A79C95A1D3FB"]["name"] == "Internet Performance";
+            allocationArray["Box Office"]["Internet Test Series"]["501E9DEE-E684-493D-9406-A79C95A1D3FB"]["date"] = "June 10";
+            allocationArray["Box Office"]["Internet Test Series"]["501E9DEE-E684-493D-9406-A79C95A1D3FB"]["admissions"] = "10.00";
+            allocationArray["Box Office"]["Internet Test Series"]["501E9DEE-E684-493D-9406-A79C95A1D3FB"]["requests"] = "0.00";
+
+            /*
+            allocationArray["Box Office"]["Star Trek"] = new Array();
+            allocationArray["Box Office"]["Star Trek"]["Star Trek Performance"] = new Array();
+            allocationArray["Box Office"]["Star Trek"]["Star Trek Performance"]["date"] = "Aug 25";
+            allocationArray["Box Office"]["Star Trek"]["Star Trek Performance"].admissions = "50.00";
+            allocationArray["Box Office"]["Star Trek"]["Star Trek Performance"].requests = "15.00";
+            */
+
+            //document.write(allocationArray["Box Office"]["Internet Test Series"]["Internet Performance"].admissions);
+            //document.write(allocationArray["Box Office"]["Star Trek"]["Star Trek Performance"].requests);
+
+            var content = "<table>";
+            content += "<tr><td><b>" + (allocationArray["Box Office"]["Internet Test Series"]["501E9DEE-E684-493D-9406-A79C95A1D3FB"]["name"]) + "<b></td></tr>";
+            content += "<tr><td><b>Allocated Payments<b><td></tr>";
+
+            for (output_method in allocationArray) {
+                content += "<tr><td><b>" + output_method + "<b></td></tr>";
+                for (series in allocationArray[output_method])
+                {
+                    content += "<tr><td><b>" + series + "<b></td></tr>";
+                    for (performance_id in allocationArray[output_method][series]) {
+                        
+                    }                    
+                }
+            }
+            content += "</table>";
+
+            //document.write(content);
+
+            var myArray = new Array();
+            if (myArray["Box Office"] == undefined)
+                myArray["Box Office"] = new Array();
+
+            if (myArray["Box Office"]["Internet Test Series"] == undefined)
+                myArray["Box Office"]["Internet Test Series"] = new Array();
+
+            if (myArray["Box Office"]["Internet Test Series"]["501E9DEE-E684-493D-9406-A79C95A1D3FB"] == undefined)
+                myArray["Box Office"]["Internet Test Series"]["501E9DEE-E684-493D-9406-A79C95A1D3FB"] = new Array();
+
+            myArray["Box Office"]["Internet Test Series"]["501E9DEE-E684-493D-9406-A79C95A1D3FB"]["name"] = "Internet Performance";
+            myArray["Box Office"]["Internet Test Series"]["501E9DEE-E684-493D-9406-A79C95A1D3FB"]["date"] = "July 10";
+            myArray["Box Office"]["Internet Test Series"]["501E9DEE-E684-493D-9406-A79C95A1D3FB"]["admissions"] = "12.00";
+            myArray["Box Office"]["Internet Test Series"]["501E9DEE-E684-493D-9406-A79C95A1D3FB"]["requests"] = "2.00";
+
+            document.write(myArray["Box Office"]["Internet Test Series"]["501E9DEE-E684-493D-9406-A79C95A1D3FB"]["requests"]);
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

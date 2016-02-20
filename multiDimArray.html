@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript" src="g.js"></script>
+    <script type="text/javascript">
+        var pricingArray = new Array();
+
+        document.write(pricingArray.length);
+        br();
+        var priceZoneId = 0;
+        var priceTypeId = 0;
+        var promoCodeId = 0;
+        var priceZoneAmount = 150;
+        if (pricingArray[priceZoneId] == undefined) {
+            pricingArray[priceZoneId] = new Array();
+        }
+
+        document.write(pricingArray.length);
+        br();
+
+        pricingArray[priceZoneId][priceTypeId + "::" + promoCodeId] = priceZoneAmount;
+
+        document.write(pricingArray.length);
+        br();
+
+    </script>    
+</head>
+<body >
+</body>
+</html>

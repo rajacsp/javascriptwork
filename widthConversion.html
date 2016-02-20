@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">    
+    <script type="text/javascript">
+
+        function tableRowAttributes() {
+            this.alignment = null;
+            this.backgroundColour = null;
+            this.foregroundColour = null;
+            this.fontSize = null;
+            this.fontStyle = null;
+            this.font = null;
+
+            this.colSpans = null;
+            this.colWidths = null;
+            this.alignments = null;
+            this.backgroundColours = null;
+            this.foregroundColours = null;
+            this.fontSizes = null;
+            this.fontStyles = null;
+            this.fonts = null;
+        }
+
+        var row = new tableRowAttributes();
+        row.colWidths = new Array();
+
+        row.colWidths.push(200);
+        row.colWidths.push(200);
+        row.colWidths.push(400);
+        row.colWidths.push(400);
+        row.colWidths.push(200);
+        row.colWidths.push(800);
+        row.colWidths.push(800);
+        row.colWidths.push(200);
+
+        document.write(row.colWidths+"<br>");
+
+        var newRow = convertColWidths(row.colWidths);
+
+        function convertColWidths(array) {
+
+            var newArray = new Array();
+            for (var i = 0; i < array.length; i++) {
+                newArray[i] = parseInt(array[i]) / 10;
+            }
+
+            return newArray;
+        }
+
+        document.write(newRow);
+
+    </script>    
+</head>
+<body>
+    
+</body>
+</html>

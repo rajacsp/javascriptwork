@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript">
+        var orderadmission_transaction_state = "3";
+
+
+        function getRecordState(orderadmission_transaction_state)
+        {
+            if(orderadmission_transaction_state == 0)
+                return 0;
+
+            if(orderadmission_transaction_state == 3 || orderadmission_transaction_state == 4)
+                return 1;
+
+            if(orderadmission_transaction_state == 2)
+                return 2;
+
+            return 0;
+        }
+
+        document.write(getRecordState(orderadmission_transaction_state));
+
+    </script>    
+</head>
+<body >
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript">
+        var start_1 = new Date();
+        var n = 500000;
+        var i = 0;
+
+        while (i < n) {
+            i++;
+            var ar = new Array();
+            ar.push('one');
+            ar.push('two');
+            ar.push('three');
+        }
+
+        var end_1 = new Date();
+
+
+        var start_2 = new Date();
+        i = 0;
+        var ar;
+        while (i < n) {
+            i++;
+            ar = new Array();
+            ar.push('one');
+            ar.push('two');
+            ar.push('three');
+        }
+        var end_2 = new Date();
+
+
+        document.write(end_1 - start_1);
+        document.write('<br>');
+        document.write(end_2 - start_2);
+    </script>    
+</head>
+<body >
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript">
+        function getSelectedItems(formName, elementName) {
+
+            if (!formName || !elementName)
+                return;
+            
+            document.write('comes inside : formName='+formName+', elementName='+elementName+' <br>');
+        }
+
+        getSelectedItems(); // no param
+
+        getSelectedItems('a'); // one param
+
+        getSelectedItems('', 'b'); // first param is empty
+
+        getSelectedItems('a', ''); // second param is empty
+
+        getSelectedItems('', ''); // both params are empty
+
+        getSelectedItems('a', 'b'); //valid : both params are available
+    </script>    
+</head>
+<body >
+</body>
+</html>

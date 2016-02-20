@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript">
+        var a;
+        var b = null;
+
+        function br(){
+            document.write('<br>');
+        }
+
+        document.write('a :' + a + ', b :' + b);
+        br();
+
+        if (a == null) {
+            document.write('a is null');
+            br();
+        }
+
+        if (a == undefined) {
+            document.write('a is literal undefined');            
+        }else {
+            document.write('a is NOT literal undefined');            
+        }
+        br();
+
+        if (a == 'undefined') {
+            document.write('a is string undefined');            
+        }else {
+            document.write('a is NOT string undefined');            
+        }
+
+        br();
+
+        if (a) {
+            document.write('a is an object/non-null holder/non-null variable');
+        } else {
+            document.write('a is neither an object nor an non-null variable');
+        }
+
+        br();
+
+        if (a == b) {
+            document.write('a == b');
+        } else {
+            document.write('a != b');
+        }
+
+
+    </script>    
+</head>
+<body >
+    
+</body>
+</html>

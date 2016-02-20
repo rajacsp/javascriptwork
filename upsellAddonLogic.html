@@ -1,0 +1,212 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script type="text/javascript">
+
+            var upE = false; // upsell enabled
+            var adE = false; // addon enabled
+            var upId = false;
+            var adId = false;
+
+            function getString(pFlag, i ) {
+                
+                var item = "";
+                var color = "";
+                var msg = "<span style='color:green'>";
+
+                switch(i){
+                    case 1:
+                        item = "upsell ";
+                        break;
+                    case 2:
+                        item = "addon ";
+                        break;
+                    case 3:
+                        item = "upsellID ";
+                        break;
+                    case 4:
+                        item = "addonID ";
+                        break;
+                }
+
+                var fString = "";
+                if (pFlag) {
+                    fString = "Enabled";
+                    color = "green";
+                }
+                else {
+                    fString = "Disabled";
+                    color = "red";
+                }
+                msg += "</span>";
+                return "<span style='color:"+color+"'>"+item+" "+fString+"</span>";
+            }
+
+
+            function b()
+            {
+                document.write("<br>");
+            }
+
+            function plainSubmit()
+            {
+                //b();
+                //document.write("plain submit");
+                return "plain submit";
+            }
+
+
+            function decideCall(upE, adE, upId, adId)
+            {
+                
+                // check both disabled
+                if (!(upE || adE)) {
+
+                    return plainSubmit();                    
+                }
+
+                // both enabled
+                if (upE && adE) {
+
+                    // check for upId and adId
+                    //if(!upId)
+
+                    if (!(upId || adId)) {
+                        // both upId, adId not attached to Item
+                        return plainSubmit();
+                        
+                    }
+
+                    if (upId && adId) {
+                        // both upId & adId available
+                        return "cancelCallIndex 8 : upsellCall For Addon";
+                    }
+
+                    if (upId) {
+                        // only upId attached to Item
+                        return "cancelCallIndex 16 : upsellCall For plain Submit";
+                    }
+
+                    if (adId) {
+                        // only adId attached to Item
+                        return "cancelCallIndex 16 : addonCall For plain Submit";
+                    }
+
+                    return plainSubmit();
+                }
+
+                if(upE){
+                    // check for upId
+                    if (!upId) {
+                        return plainSubmit();                        
+                    }
+                    return upsellFinalCall();                    
+                }
+
+                if (adE) {
+                    // check for adId
+                    if (!adId) {
+                        return plainSubmit();
+                    }
+
+                    return addonFinalCall();                    
+                }
+
+                return "not dec";
+            }
+
+            function addonFinalCall() {
+                return "cancelCallIndex 16 : addon final call For plain submit";
+            }
+
+
+            function upsellFinalCall() {
+                return "cancelCallIndex 16 : upsell final call For plain submit";
+                
+            }
+
+            Math.RandomInteger = function (n, m) {
+                if (!m) { m = 1; } // default range starts at 1
+                var max = n > m ? n : m; // doesn<q>t matter which value is min or max
+                var min = n === max ? m : n; // min is value that is not max
+                var d = max - min + 1; // distribution range
+                return Math.floor(Math.random() * d + min);
+            }
+
+            Math.RandomBoolean = function () {
+                var n = Math.RandomInteger(1, 10);
+                if (n > 5)
+                    return true;
+                return false;
+            }
+
+            function generateCalls(n) {
+                for (i = 0; i < n; i++) {                    
+                    //document.write(Math.RandomBoolean());
+
+                    upE = Math.RandomBoolean();
+                    adE = Math.RandomBoolean();
+
+                    upId = Math.RandomBoolean();
+                    adId = Math.RandomBoolean();
+
+                    var msg = '';
+                    msg += '  upE : ' + upE;
+                    msg += ', adE : ' + adE;
+                    msg += ', upId : ' + upId;
+                    msg += ', adId : ' + adId;
+                    //document.write(msg);
+
+                    //decideCall(upE, adE, upId, adId);
+                    //b();
+                    //document.write(getString(upE, 1));
+
+                    var dC = decideCall(upE, adE, upId, adId);
+                    document.write(generateHTML(upE, adE, upId, adId, dC));
+                }
+            }
+
+            function g(a, b, c, d) {
+                var dC = decideCall(a, b, c, d);
+                document.write(generateHTML(a, b, c, d, dC));
+            }
+
+            function getHTMLPart() {
+                var msg = '<table border=1 cellpadding=5 cellspacing=0 style="border:1px solid ash">';
+                msg += '<tr>';
+                msg += '<th>Upsell Enable</th>';
+                msg += '<th>Addon Enable</th>';
+                msg += '<th>Upsell ID Available</th>';
+                msg += '<th>Addon ID Available</th>';
+                msg += '<th>Deciding Call</th>';
+                msg += '</tr>';
+
+                return msg;    
+            }
+
+            function generateHTML(upE, adE, upId, adId, dC) {
+                var msg = '';
+                msg += '<tr>';
+                msg += '<td>'+upE+'</td>';
+                msg += '<td>'+adE+'</td>';
+                msg += '<td>'+upId+'</td>';
+                msg += '<td>'+adId+'</td>';
+                msg += '<td>'+dC+'</td>';
+                msg += '</tr>';               
+
+                return msg;
+            }
+
+            function getG(n) {
+                document.write(getHTMLPart());
+                //g(true, false, true, false);
+                generateCalls(n);
+                document.write('</table>');
+            }
+            getG(20);
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

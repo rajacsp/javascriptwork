@@ -1,0 +1,276 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript">
+        var monthsOfYear = new Array();
+        monthsOfYear[0] = "Jan";
+        monthsOfYear[1] = "Feb";
+        monthsOfYear[2] = "Mar";
+        monthsOfYear[3] = "Apr";
+        monthsOfYear[4] = "May";
+        monthsOfYear[5] = "Jun";
+        monthsOfYear[6] = "Jul";
+        monthsOfYear[7] = "Aug";
+        monthsOfYear[8] = "Sep";
+        monthsOfYear[9] = "Oct";
+        monthsOfYear[10] = "Nov";
+        monthsOfYear[11] = "Dec";
+        var longMonthsOfYear = new Array();
+        longMonthsOfYear[0] = "January";
+        longMonthsOfYear[1] = "February";
+        longMonthsOfYear[2] = "March";
+        longMonthsOfYear[3] = "April";
+        longMonthsOfYear[4] = "May";
+        longMonthsOfYear[5] = "June";
+        longMonthsOfYear[6] = "July";
+        longMonthsOfYear[7] = "August";
+        longMonthsOfYear[8] = "September";
+        longMonthsOfYear[9] = "October";
+        longMonthsOfYear[10] = "November";
+        longMonthsOfYear[11] = "December";
+        var daysOfWeek = new Array();
+        daysOfWeek[0] = "Sun";
+        daysOfWeek[1] = "Mon";
+        daysOfWeek[2] = "Tue";
+        daysOfWeek[3] = "Wed";
+        daysOfWeek[4] = "Thu";
+        daysOfWeek[5] = "Fri";
+        daysOfWeek[6] = "Sat";
+        var longDaysOfWeek = new Array();
+        longDaysOfWeek[0] = "Sunday";
+        longDaysOfWeek[1] = "Monday";
+        longDaysOfWeek[2] = "Tuesday";
+        longDaysOfWeek[3] = "Wednesday";
+        longDaysOfWeek[4] = "Thursday";
+        longDaysOfWeek[5] = "Friday";
+        longDaysOfWeek[6] = "Saturday";
+        var timeIndicator = new Array();
+        timeIndicator[0] = "AM";
+        timeIndicator[1] = "PM";
+
+        var focusDate = new Date("01 March, 2012");
+        var endDate = new Date(0);
+
+        var dateStr = "%Y-%m-%d %H:%M:%S";
+        var showTime = true;
+        var isDefault = true;
+
+        var rowFrom = -1;
+        var celFrom = -1;
+        var mouseIsDown = false;
+
+        var sTokenName = "sToken"
+        var sToken = "1,00a6344f,4f6b4098,93F7FD6D-BCC4-445E-A1D7-B6B865136FF6,VnmaTNKOiZaK7fhyTJMOehjv60M=";
+
+        var dayBold = new Array();
+
+        dayBold[28] = "true";
+
+        function loadLocalPage() {
+            //alert('inside loadLocalPage');
+            tsPageLoad();
+        }
+    </script>
+    
+    
+</head>
+<body onload="loadLocalPage();">
+    <table id="calendar-navigation" width="300px">
+        <tbody>
+            <tr align="center">
+                <td id="lastmonth" style="visibility: visible;">
+                <td>
+                    <div class="instructiontext backmedium groove">
+                        <select id="months::select" class="instructiontext backmedium groove"                            
+                            onchange="tsSetMonthFromPopup(event, 'months' )">
+                            <option value="JANUARY">JANUARY</option>
+                            <option value="FEBRUARY">FEBRUARY</option>
+                            <option value="MARCH">MARCH</option>
+                            <option value="APRIL">APRIL</option>
+                            <option value="MAY">MAY</option>
+                            <option value="JUNE">JUNE</option>
+                            <option value="JULY">JULY</option>
+                            <option value="AUGUST">AUGUST</option>
+                            <option value="SEPTEMBER">SEPTEMBER</option>
+                            <option value="OCTOBER">OCTOBER</option>
+                            <option value="NOVEMBER">NOVEMBER</option>
+                            <option value="DECEMBER">DECEMBER</option>
+                         </select>   
+                    </div>
+                </td>
+                <td id="nextmonth">
+            </tr>
+        </tbody>
+    </table>
+    <table id="calendarHeader" border=1>
+        <tbody>
+            <tr>
+                <td id="day0"  width="50px"> 
+                    Sun
+                </td>
+                <td id="day1"  width="50px">
+                    Mon
+                </td>
+                <td id="day2"  width="50px">
+                    Tue
+                </td>
+                <td id="day3"  width="50px">
+                    Wed
+                </td>
+                <td id="day4"  width="50px">
+                    Thu
+                </td>
+                <td id="day5"  width="50px">
+                    Fri
+                </td>
+                <td id="day6"  width="50px">
+                    Sat
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table id="calendarTable" style="-moz-user-select: none; cursor: default;"  border=1>
+        <tbody>
+            <tr id="week0">
+                <td id="w0d0" width="50px">
+                    &nbsp;
+                </td>
+                <td id="w0d1"  width="50px">
+                    &nbsp;
+                </td>
+                <td id="w0d2"  width="50px">
+                    &nbsp;
+                </td>
+                <td id="w0d3"  width="50px">
+                    &nbsp;
+                </td>
+                <td id="w0d4"  width="50px">
+                    1
+                </td>
+                <td id="w0d5"  width="50px">
+                    2
+                </td>
+                <td id="w0d6"  width="50px">
+                    3
+                </td>
+            </tr>
+            <tr id="week1" style="">
+                <td id="w1d0" class=" ">
+                    4
+                </td>
+                <td id="w1d1">
+                    5
+                </td>
+                <td id="w1d2">
+                    6
+                </td>
+                <td id="w1d3">
+                    7
+                </td>
+                <td id="w1d4">
+                    8
+                </td>
+                <td id="w1d5">
+                    9
+                </td>
+                <td id="w1d6">
+                    10
+                </td>
+            </tr>
+            <tr id="week2" style="">
+                <td id="w2d0">
+                    11
+                </td>
+                <td id="w2d1">
+                    12
+                </td>
+                <td id="w2d2" class=" ">
+                    13
+                </td>
+                <td id="w2d3">
+                    14
+                </td>
+                <td id="w2d4">
+                    15
+                </td>
+                <td id="w2d5">
+                    16
+                </td>
+                <td id="w2d6">
+                    17
+                </td>
+            </tr>
+            <tr id="week3" style="">
+                <td id="w3d0">
+                    18
+                </td>
+                <td id="w3d1">
+                    19
+                </td>
+                <td id="w3d2">
+                    20
+                </td>
+                <td id="w3d3">
+                    21
+                </td>
+                <td id="w3d4" class=" ">
+                    22
+                </td>
+                <td id="w3d5">
+                    23
+                </td>
+                <td id="w3d6">
+                    24
+                </td>
+            </tr>
+            <tr id="week4" style="">
+                <td id="w4d0">
+                    25
+                </td>
+                <td id="w4d1">
+                    26
+                </td>
+                <td id="w4d2">
+                    27
+                </td>
+                <td id="w4d3" class="event">
+                    28
+                </td>
+                <td id="w4d4" class=" ">
+                    29
+                </td>
+                <td id="w4d5" class=" ">
+                    30
+                </td>
+                <td id="w4d6">
+                    31
+                </td>
+            </tr>
+            <tr id="week5" style="display: none;">
+                <td id="w5d0">
+                    &nbsp;
+                </td>
+                <td id="w5d1">
+                    &nbsp;
+                </td>
+                <td id="w5d2">
+                    &nbsp;
+                </td>
+                <td id="w5d3">
+                    &nbsp;
+                </td>
+                <td id="w5d4">
+                    &nbsp;
+                </td>
+                <td id="w5d5">
+                    &nbsp;
+                </td>
+                <td id="w5d6">
+                    &nbsp;
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

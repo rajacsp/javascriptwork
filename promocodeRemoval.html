@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript">
+        var priceList = new Array();
+        priceList['EA25EE97-EA9B-41B2-8D03-BC6B647F1255::FCC974E0-8577-4AAE-A7A9-0BFB0B5626C9'] = 'Senior (pone)';
+        priceList['2716E02F-42D3-4EE6-BF89-BD03E23BE01A'] = 'Adult';
+        priceList['C946F230-5711-4301-9032-25CBCCBCD3C2'] = 'Junior';
+
+        for (guid in priceList) {
+            document.write(guid+' -> '+priceList[guid]+'<br>');
+        }
+
+        priceList = amendPriceList(priceList);
+
+        document.write('<br>');
+        for (guid in priceList) {
+            document.write(guid + ' -> ' + priceList[guid] + '<br>');
+        }
+
+        // remove promocode from the pricelist's price type id
+        function amendPriceList(priceList) {
+            var newPriceList = new Array();
+            for (guid in priceList) {
+                var cGuid = guid;
+                var cGuidValue = priceList[cGuid];
+                if (cGuid.indexOf("::") != -1) {
+                    cGuid = cGuid.substring(0, cGuid.indexOf("::"));
+                }
+                newPriceList[cGuid] = cGuidValue;
+            }
+            return newPriceList;    
+        }
+    </script>    
+</head>
+<body >
+    
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">    
+    <script type="text/javascript">
+        function tsSetPriceZone(zoneString, elementCount, form) {
+            var selectedZone = getSelectedZone(zoneString + elementCount);
+            if (selectedZone == null || selectedZone == undefined || selectedZone == '' || selectedZone == 'select')
+                return;
+
+
+        }
+
+        var jselectedZones = new Array();
+        function tsSetPriceZone1(zoneString, elementCount, form) {
+            var selectedZone = getSelectedZone(zoneString + elementCount);
+            if (selectedZone == null || selectedZone == undefined || selectedZone == '' || selectedZone == 'select')
+                return;
+
+            jselectedZones.uniquePush(selectedZone);
+            //document.getElementById('selectedZones').value = jselectedZones.toString();
+            document.getElementById('selectedZonesDiv').innerHTML = jselectedZones.toString();
+            //form.submit();
+        }
+    </script>    
+</head>
+<body >
+    <form name='zoneForm'>
+    <select id='pzone1' onchange='tsSetPriceZone(\'pzone\', '1' ,this.form);' name='pzone1'>
+        <option value='zone1'>zone1</option>
+        <option value='zone2'>zone2</option>
+        <option value='zone3'>zone3</option>
+        <option value='zone4'>zone4</option>
+        <option value='zone5'>zone5</option>
+    </select>
+    </form>
+</body>
+</html>

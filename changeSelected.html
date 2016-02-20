@@ -1,0 +1,32 @@
+﻿<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script type="text/javascript">
+            function changeMe()
+            {
+                var element = document.forms['avArticleForm'].elements['BOset::WScontent::FormResponses::data1']
+                //alert(element);
+
+                element.value = "15";
+            }
+        </script>
+    </head>
+    <body>
+        <form name="avArticleForm">
+
+            <select id='abcd' name='BOset::WScontent::FormResponses::data1'>            
+                <option value="3">2003</option>
+                <option value="4">2004</option>
+                <option value="5">2005</option>
+                <option value="11">2011</option>
+                <option value="15">2015</option>
+                <option value="20">2020</option>
+            </select>
+
+            <input type="button" onclick="changeMe();" value="change" />
+        </form>
+        
+
+
+    </body>
+</html>
