@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 jkkkk
 
 test
@@ -5,3 +6,6 @@ test
 test1
 
 test2
+=======
+jkkkk
+>>>>>>> refs/remotes/origin/master
