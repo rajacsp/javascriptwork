@@ -1,0 +1,116 @@
+<html>
+    <head>
+        <script type="text/javascript">
+
+            var hash = {};
+            var mapArray = new Array();
+            for (var i = 300; i < 310; i++) {
+                
+                var map = {
+                    'agent_id': 'axyz'+i,
+                    'agent_name': 'Gravel',
+                    'commission_name': '10% Net',
+                    'commission_amount': 20
+                };
+
+                if (i % 4 == 0) {
+                    map.agent_id = 'axyz404';
+                    map.commission_name = '20% Net';
+                    map.commission_amount = 20
+                } else if (i % 3 == 0) {
+                    map.agent_id = 'axyz505';
+                    map.commission_name = '15% Net';
+                    map.commission_amount = 30
+                } else if (i % 2) {
+                    map.agent_id = 'axyz606';
+                    map.commission_name = '25% Net';
+                    map.commission_amount = 40
+                } else {
+                    map.agent_id = 'axyz707';
+                    map.commission_name = '30% Net';
+                    map.commission_amount = 50
+                }               
+
+                //document.write('map->agent_id : ' + map.agent_id);
+                //br();
+                //document.write('map->agent_name : ' + map.agent_name);
+                //br();
+                //document.write('map->commission_name : ' + map.commission_name);
+                //br();
+                //br();
+
+
+                var nonGroupMap = map;
+                var groupMap = map;
+                //mapArray.push(nonGroupMap); // non-grouping
+                storeHash(map.agent_id, groupMap); // grouping
+            }
+
+            extractMapArray(mapArray);
+            br(2);
+            extractHash(hash);
+
+            function storeHash(key, value) {
+                
+                if (hash[key]) {
+                    //hash[key] = hash[key] + value;
+
+                    var oldMap = hash[key];
+                    var newMap = value;
+
+                    oldMap.commission_name = oldMap.commission_name + ', ' + newMap.commission_name;
+                    oldMap.commission_amount = oldMap.commission_amount + newMap.commission_amount;
+
+                    hash[key] = oldMap;
+                    return;
+                }
+                hash[key] = value;
+            }
+
+            //document.write(mapArray.length);
+            function br(count) {
+                if(arguments.length <= 0){
+                    document.write('<br>');
+                    return;
+                }
+                for (var i = 0; i < count; i++) {
+                    document.write('<br>');
+                }
+            }
+
+            //extractMapArray(mapArray);
+
+            function extractHash(cH) {
+                for (var key in cH) {
+                    var cM = cH[key];
+                    var msg = '[' + cM.agent_id + ',';
+                    msg += '' + cM.agent_name + ',';
+                    msg += '' + cM.commission_name + ',';
+                    msg += '' + cM.commission_amount + ']';
+                    document.write(msg);
+                    br();
+                }
+            }
+
+            function extractMapArray(cmArray) { //current map array
+                for (var i = 0; i < cmArray.length; i++) {
+                    var cM = cmArray[i];
+
+                    var msg = '[' + cM.agent_id + ',';
+                    msg += '' + cM.agent_name + ',';
+                    msg += '' + cM.commission_name + ',';
+                    msg += '' + cM.commission_amount + ']';
+                    document.write(msg);
+                    br();
+                }
+            }
+
+            
+
+
+        </script>
+    </head>
+    <body>
+           
+    </body>
+</html>

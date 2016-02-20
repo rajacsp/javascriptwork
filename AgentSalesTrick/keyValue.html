@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <script type="text/javascript">
+
+
+            var hash = {};
+
+            storeHash('a101', 34);
+            storeHash('a102', 14);
+            storeHash('a103', 24);
+            storeHash('a104', 44);
+            storeHash('a101', 44);
+            function storeHash(key, value) {
+                if (hash[key]) {
+                    hash[key] = hash[key] + value;
+                    return;
+                }
+                hash[key] = value;
+            }
+
+            extractHash(hash);
+
+            function extractHash(cH) {
+                for (var key in cH) {
+                    document.write(key + ' - ' + cH[key]);
+                    br();
+                }
+            }
+
+            function br() {
+                document.write('<br>');
+            }
+
+        </script>
+    </head>
+    <body>
+           
+    </body>
+</html>

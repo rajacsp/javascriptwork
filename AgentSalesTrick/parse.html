@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo">Click the button to display the fixed number.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<script type="text/javascript">
+    function myFunction() {
+        var numString = "5.56789";
+        var num = parseFloat(numString).toFixed(2);
+        var x = document.getElementById("demo");
+        x.innerHTML = num.toFixed(3);
+    }
+</script>
+
+</body>
+</html>
